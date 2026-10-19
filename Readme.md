@@ -196,15 +196,6 @@ So khớp tham chiếu/từ khóa chỉ hỗ trợ kiểm tra hồi quy. Cần �
 
 Phiên nạp có nhật ký: khi khởi động lại, dữ liệu đang ghi dở được rollback; phiên đã quyết định commit được hoàn tất. Dữ liệu cũ được giữ đến khi phiên mới đủ điều kiện công bố. Kho cũ thiếu nhật ký hoặc danh tính không được tự sửa chỉ để vượt kiểm tra.
 
-## Giới hạn hiện tại
-
-- Chưa nghiệm thu cài mới trên nhiều hệ điều hành hoặc hiệu năng máy yếu. Git còn ghi `loaddocs/Document.py` và `loaddocs/Embedding.py` trong khi code import chữ thường; cần sửa tên trong Git trước khi công bố hỗ trợ Linux.
-- Ollama đang bật `reasoning=True` trực tiếp trong `services/model.py`; chưa có biến `.env` điều khiển. Cần đo lại giới hạn đầu ra và chất lượng JSON khi thay model/reasoning.
-- Nhánh trộn nguồn generic chưa có cùng bước kiểm chứng claim như nhánh chỉ gồm nguồn tôn giáo. Có dẫn nguồn không đồng nghĩa mọi mệnh đề đã được xác nhận về nghĩa.
-- Hồ sơ bản dịch, dữ liệu cách ly và phạm vi kho cần người duyệt. Không mặc định kho bao phủ toàn bộ Kinh Thánh.
-- Báo cáo cũ không chứng nhận chất lượng phiên bản hiện tại. API miễn phí và model thay thế cần được kiểm chứng riêng.
-- Chưa có phân quyền quản trị/tách kho theo người dùng. Chưa phù hợp công bố như dịch vụ nhiều người dùng có quyền tải lên/xóa chung.
-
 ## Cấu trúc và chia sẻ mã nguồn
 
 | Đường dẫn | Vai trò |
