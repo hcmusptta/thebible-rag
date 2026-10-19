@@ -219,5 +219,3 @@ Phiên nạp có nhật ký: khi khởi động lại, dữ liệu đang ghi d�
 | `tests/` | Kiểm thử chức năng và hồi quy. |
 
 `chainlit.md` là nội dung giới thiệu được Chainlit đọc; các Markdown hướng dẫn khác không tự trở thành system prompt hoặc dữ liệu RAG.
-
-Trước khi đưa lên GitHub, kiểm tra file chuẩn bị commit: không đưa `.env`, bản sao như `.env copy`, khóa API, model, môi trường ảo, log, PDF riêng hay kho/backup dữ liệu lên repo. `.gitignore` hiện chưa bao phủ mọi tên bản sao và backup; cần rà soát riêng. Khóa từng lộ phải được thu hồi; nếu từng commit, kiểm tra cả lịch sử Git. Bổ sung giấy phép mã nguồn và chỉ phân phối tài liệu có quyền chia sẻ.
