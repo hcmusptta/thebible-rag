@@ -1,0 +1,41 @@
+# Python 3.11; pin the application APIs used by the current code.
+chainlit==2.11.1
+chromadb==1.5.9
+PyMuPDF==1.28.0
+filelock==3.32.3
+python-dotenv==1.2.2
+jsonschema==4.26.0
+
+# Local embedding, reranking, and Hugging Face generation.
+numpy==2.4.6
+torch==2.13.0
+sentence-transformers==5.6.0
+sentencepiece==0.2.2
+transformers==5.14.1
+accelerate==1.14.0
+huggingface-hub==1.29.0
+rank-bm25==0.2.2
+
+# LLM providers and text splitting.
+google-genai==2.13.0
+langchain-core==1.5.0
+langchain-ollama==1.1.0
+langchain-text-splitters==1.1.2
+ollama==0.6.2
+
+# RAGAS imports these integrations and converts results to pandas.
+ragas==0.4.3
+langchain==1.3.14
+# RAGAS 0.4.3 imports VertexAI classes removed in community 0.4.2.
+langchain-community==0.4.1
+# Pin the RAGAS adapters together; avoid resolver backtracking to old Instructor.
+langchain-openai==1.4.0
+openai==2.46.0
+instructor==1.15.4
+datasets==5.0.0
+pandas==3.0.3
+nest-asyncio==1.6.0
+# Required by RAGAS non-LLM context/string metrics, but not installed by its core extra.
+rapidfuzz==3.14.6
+# datasets 5.0.0 requires fsspec[http] <= 2026.4.0.
+fsspec[http]==2026.4.0

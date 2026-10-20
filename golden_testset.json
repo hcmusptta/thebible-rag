@@ -1,0 +1,77 @@
+[
+  {
+    "id": "sample_storage",
+    "user_input": "Dự án Atlas lưu tài liệu ở đâu?",
+    "document_type": "generic",
+    "reference": "Trong thư mục atlas_documents.",
+    "reference_contexts": [
+      "Dữ liệu minh họa do dự án tự soạn, không phải bản văn Kinh Thánh hay giáo lý.\n\nDự án Atlas lưu tài liệu trong thư mục atlas_documents. Mỗi tài liệu được kiểm tra trước khi công bố cho người đọc. Người phụ trách kiểm tra là Lan.\n\nNhóm Atlas họp vào thứ Ba hằng tuần. Buổi họp bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ. Các thông báo được viết bằng tiếng Việt.\n\nAtlas có hai nguyên tắc: giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng. Tài liệu không nêu ngân sách hay người sáng lập dự án."
+    ],
+    "metadata": {
+      "source": "onboarding_sample.txt",
+      "golden_revision": "synthetic-sample-v1",
+      "review_status": "development_example",
+      "reference_basis": "whole_self_authored_sample_document"
+    }
+  },
+  {
+    "id": "sample_reviewer",
+    "user_input": "Ai phụ trách kiểm tra tài liệu Atlas?",
+    "document_type": "generic",
+    "reference": "Lan phụ trách kiểm tra tài liệu.",
+    "reference_contexts": [
+      "Dữ liệu minh họa do dự án tự soạn, không phải bản văn Kinh Thánh hay giáo lý.\n\nDự án Atlas lưu tài liệu trong thư mục atlas_documents. Mỗi tài liệu được kiểm tra trước khi công bố cho người đọc. Người phụ trách kiểm tra là Lan.\n\nNhóm Atlas họp vào thứ Ba hằng tuần. Buổi họp bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ. Các thông báo được viết bằng tiếng Việt.\n\nAtlas có hai nguyên tắc: giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng. Tài liệu không nêu ngân sách hay người sáng lập dự án."
+    ],
+    "metadata": {
+      "source": "onboarding_sample.txt",
+      "golden_revision": "synthetic-sample-v1",
+      "review_status": "development_example",
+      "reference_basis": "whole_self_authored_sample_document"
+    }
+  },
+  {
+    "id": "sample_meeting",
+    "user_input": "Nhóm Atlas họp vào thứ mấy?",
+    "document_type": "generic",
+    "reference": "Thứ Ba hằng tuần.",
+    "reference_contexts": [
+      "Dữ liệu minh họa do dự án tự soạn, không phải bản văn Kinh Thánh hay giáo lý.\n\nDự án Atlas lưu tài liệu trong thư mục atlas_documents. Mỗi tài liệu được kiểm tra trước khi công bố cho người đọc. Người phụ trách kiểm tra là Lan.\n\nNhóm Atlas họp vào thứ Ba hằng tuần. Buổi họp bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ. Các thông báo được viết bằng tiếng Việt.\n\nAtlas có hai nguyên tắc: giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng. Tài liệu không nêu ngân sách hay người sáng lập dự án."
+    ],
+    "metadata": {
+      "source": "onboarding_sample.txt",
+      "golden_revision": "synthetic-sample-v1",
+      "review_status": "development_example",
+      "reference_basis": "whole_self_authored_sample_document"
+    }
+  },
+  {
+    "id": "sample_time",
+    "user_input": "Cuộc họp Atlas bắt đầu và kết thúc lúc nào?",
+    "document_type": "generic",
+    "reference": "Bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ.",
+    "reference_contexts": [
+      "Dữ liệu minh họa do dự án tự soạn, không phải bản văn Kinh Thánh hay giáo lý.\n\nDự án Atlas lưu tài liệu trong thư mục atlas_documents. Mỗi tài liệu được kiểm tra trước khi công bố cho người đọc. Người phụ trách kiểm tra là Lan.\n\nNhóm Atlas họp vào thứ Ba hằng tuần. Buổi họp bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ. Các thông báo được viết bằng tiếng Việt.\n\nAtlas có hai nguyên tắc: giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng. Tài liệu không nêu ngân sách hay người sáng lập dự án."
+    ],
+    "metadata": {
+      "source": "onboarding_sample.txt",
+      "golden_revision": "synthetic-sample-v1",
+      "review_status": "development_example",
+      "reference_basis": "whole_self_authored_sample_document"
+    }
+  },
+  {
+    "id": "sample_principles",
+    "user_input": "Nêu hai nguyên tắc của Atlas.",
+    "document_type": "generic",
+    "reference": "Giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng.",
+    "reference_contexts": [
+      "Dữ liệu minh họa do dự án tự soạn, không phải bản văn Kinh Thánh hay giáo lý.\n\nDự án Atlas lưu tài liệu trong thư mục atlas_documents. Mỗi tài liệu được kiểm tra trước khi công bố cho người đọc. Người phụ trách kiểm tra là Lan.\n\nNhóm Atlas họp vào thứ Ba hằng tuần. Buổi họp bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ. Các thông báo được viết bằng tiếng Việt.\n\nAtlas có hai nguyên tắc: giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng. Tài liệu không nêu ngân sách hay người sáng lập dự án."
+    ],
+    "metadata": {
+      "source": "onboarding_sample.txt",
+      "golden_revision": "synthetic-sample-v1",
+      "review_status": "development_example",
+      "reference_basis": "whole_self_authored_sample_document"
+    }
+  }
+]

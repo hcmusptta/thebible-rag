@@ -1,0 +1,162 @@
+.runtime-about-button {
+  position: fixed;
+  top: 12px;
+  left: 58px;
+  z-index: 1200;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font: 700 16px/30px Georgia, serif;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.runtime-about-button:hover,
+.runtime-about-close:hover {
+  background: hsl(var(--accent));
+}
+
+.runtime-about-button:focus-visible,
+.runtime-about-close:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.runtime-about-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: grid;
+  place-items: start center;
+  padding: 64px 16px 16px;
+  overflow-y: auto;
+  background: rgb(0 0 0 / 45%);
+}
+
+.runtime-about-dialog {
+  width: min(520px, 100%);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  box-shadow: 0 16px 48px rgb(0 0 0 / 24%);
+}
+
+.runtime-about-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 10px 12px 10px 18px;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
+}
+
+.runtime-about-header h2,
+.runtime-about-section h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.runtime-about-header h2 {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.runtime-about-close {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 24px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.runtime-about-content {
+  padding: 4px 18px 18px;
+}
+
+.runtime-about-section {
+  padding-top: 16px;
+}
+
+.runtime-about-section + .runtime-about-section {
+  margin-top: 16px;
+  border-top: 1px solid hsl(var(--border));
+}
+
+.runtime-about-section h3 {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.runtime-about-section dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.runtime-about-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.5fr);
+  gap: 12px;
+  align-items: baseline;
+}
+
+.runtime-about-label,
+.runtime-about-value {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.runtime-about-label {
+  color: hsl(var(--muted-foreground));
+}
+
+.runtime-about-value {
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.runtime-about-status {
+  margin: 0;
+  padding: 24px 18px;
+  color: hsl(var(--muted-foreground));
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .runtime-about-button {
+    left: 52px;
+  }
+
+  .runtime-about-backdrop {
+    padding: 56px 8px 8px;
+  }
+
+  .runtime-about-dialog {
+    max-height: calc(100vh - 64px);
+  }
+
+  .runtime-about-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

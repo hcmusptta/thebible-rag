@@ -1,0 +1,7 @@
+[
+  {"id":"sample_two_items","category":"numbered_list","document_type":"generic","question":"Nêu hai nguyên tắc của Atlas.","expected_source_texts":["Atlas có hai nguyên tắc:"],"answer_terms":["nguồn gốc","thiếu bằng chứng"]},
+  {"id":"sample_negative","category":"unanswerable","document_type":"generic","question":"Ngân sách Atlas là bao nhiêu?","unanswerable":true},
+  {"id":"sample_negation","category":"negation","document_type":"generic","question":"Atlas công bố tài liệu trước hay sau khi kiểm tra?","expected_source_texts":["Mỗi tài liệu được kiểm tra trước khi công bố"],"answer_terms":["sau|trước khi công bố"]},
+  {"id":"sample_history","category":"conversation","document_type":"generic","question":"Buổi họp đó kết thúc lúc nào?","chat_history":[{"role":"user","content":"Nhóm Atlas họp lúc nào?"},{"role":"assistant","content":"Buổi họp bắt đầu lúc 9 giờ."}],"expected_source_texts":["kết thúc lúc 10 giờ"],"answer_terms":["10"]},
+  {"id":"sample_unknown_person","category":"unanswerable","document_type":"generic","question":"Ai sáng lập Atlas?","unanswerable":true}
+]

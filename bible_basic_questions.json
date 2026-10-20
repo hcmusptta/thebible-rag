@@ -1,0 +1,451 @@
+[
+  {
+    "id": "mary",
+    "question": "Đức Mẹ Maria là ai?",
+    "expected_references": [
+      "ACT 1:14",
+      "LUK 1:26-38"
+    ],
+    "answer_terms": [
+      "Ma-ri-a|Maria",
+      "mẹ|thân mẫu",
+      "Giê-su|Jesus"
+    ]
+  },
+  {
+    "id": "moses",
+    "question": "Mô-sê là ai?",
+    "expected_references": [
+      "EXO 2:10",
+      "EXO 3:10",
+      "EXO 6:26-27",
+      "DEU 34:10",
+      "ACT 7:20-36"
+    ],
+    "answer_terms": [
+      "Mô-sê",
+      "ngôn sứ|lãnh đạo|(?:đưa|giải thoát).*?(?:Ai-cập|Ai Cập|Ít-ra-en|Israel)"
+    ]
+  },
+  {
+    "id": "adam",
+    "question": "A-đam là ai?",
+    "expected_references": [
+      "GEN 2:7",
+      "GEN 5:1-5",
+      "1CO 15:45"
+    ],
+    "answer_terms": [
+      "A-đam",
+      "người|Thiên Chúa"
+    ]
+  },
+  {
+    "id": "abraham",
+    "question": "Áp-ra-ham là ai?",
+    "expected_references": [
+      "GEN 12:1-4",
+      "GEN 17:4-8",
+      "HEB 11:8-12",
+      "SIR 44:19-20",
+      "ROM 4:1-3"
+    ],
+    "answer_terms": [
+      "Áp-ra-ham",
+      "Thiên Chúa|tổ phụ|giao ước|dân"
+    ]
+  },
+  {
+    "id": "peter",
+    "question": "Phê-rô là ai?",
+    "expected_references": [
+      "MAT 10:2",
+      "1PE 1:1",
+      "2PE 1:1",
+      "MAT 16:16-19",
+      "LUK 5:3-11",
+      "JHN 1:40-42",
+      "JHN 21:15-17"
+    ],
+    "answer_terms": [
+      "Phê-rô",
+      "Giê-su|tông đồ|môn đệ"
+    ]
+  },
+  {
+    "id": "birth",
+    "question": "Chúa Giê-su sinh ở đâu?",
+    "expected_references": [
+      "LUK 2:4-11",
+      "MAT 2:1"
+    ],
+    "answer_terms": [
+      "Bê-lem|Bethlehem"
+    ]
+  },
+  {
+    "id": "exodus",
+    "question": "Mô-sê dẫn dân qua biển như thế nào?",
+    "expected_references": [
+      "EXO 14:21-31"
+    ],
+    "answer_terms": [
+      "biển",
+      "nước|khô|gió"
+    ]
+  },
+  {
+    "id": "samaritan",
+    "question": "Dụ ngôn người Sa-ma-ri nhân hậu nói về điều gì?",
+    "expected_references": [
+      "LUK 10:30-37"
+    ],
+    "answer_terms": [
+      "thương|giúp|chăm sóc|thân cận"
+    ]
+  },
+  {
+    "id": "prayer",
+    "question": "Đức Giê-su dạy cầu nguyện thế nào?",
+    "expected_references": [
+      "MAT 6:5-13",
+      "LUK 11:1-4"
+    ],
+    "answer_terms": [
+      "Cha",
+      "cầu nguyện"
+    ]
+  },
+  {
+    "id": "love",
+    "question": "Đức mến là gì?",
+    "expected_references": [
+      "1CO 13:4-8"
+    ],
+    "answer_terms": [
+      "đức mến",
+      "nhẫn nhục|hiền hậu|ghen|khoe|tự đắc"
+    ]
+  },
+  {
+    "id": "unknown_date",
+    "question": "Đức Mẹ Maria sinh chính xác ngày tháng năm nào?",
+    "unanswerable": true
+  },
+  {
+    "id": "outside",
+    "question": "Elon Musk là ai?",
+    "unanswerable": true
+  },
+  {
+    "id": "ambiguous",
+    "question": "Maria là ai?",
+    "clarification": true
+  },
+  {
+    "id": "noah",
+    "question": "Nô-ê là ai?",
+    "expected_references": [
+      "GEN 6:9-22",
+      "GEN 7:1-9",
+      "HEB 11:7"
+    ],
+    "answer_terms": [
+      "Nô-ê",
+      "tàu|hồng thủy|hồng thuỷ|lụt"
+    ]
+  },
+  {
+    "id": "john_baptist",
+    "question": "Gio-an Tẩy Giả là ai?",
+    "expected_references": [
+      "MAT 3:1-6",
+      "LUK 3:2-16",
+      "JHN 1:19-34"
+    ],
+    "answer_terms": [
+      "Gio-an",
+      "phép rửa|sám hối|dọn đường"
+    ]
+  },
+  {
+    "id": "spelling_unaccented",
+    "category": "spelling",
+    "question": "Duc me maria la ai?",
+    "expected_references": [
+      "ACT 1:14",
+      "LUK 1:26-38"
+    ],
+    "answer_terms": [
+      "mẹ|thân mẫu",
+      "Giê-su"
+    ]
+  },
+  {
+    "id": "david",
+    "category": "new_identity",
+    "question": "Đa-vít là ai?",
+    "expected_references": [
+      "2SA 5:1-5",
+      "1SA 16:1-13",
+      "2SA 7:8-9",
+      "1KI 2:10-12",
+      "1CH 18:14",
+      "2SA 2:7-11"
+    ],
+    "answer_terms": [
+      "[ĐÐ]a-vít",
+      "vua"
+    ]
+  },
+  {
+    "id": "paul",
+    "category": "new_identity",
+    "question": "Phao-lô là ai?",
+    "expected_references": [
+      "ROM 1:1",
+      "GAL 1:1",
+      "1CO 1:1",
+      "2CO 1:1",
+      "EPH 1:1",
+      "COL 1:1",
+      "2TI 1:1"
+    ],
+    "answer_terms": [
+      "Phao-lô",
+      "tông đồ|Giê-su"
+    ]
+  },
+  {
+    "id": "compare_apostles",
+    "category": "comparison",
+    "question": "Theo Gl 2:7-9, Phao-lô và Phê-rô được giao nhiệm vụ khác nhau thế nào?",
+    "expected_reference_groups": [
+      [
+        "GAL 2:7"
+      ],
+      [
+        "GAL 2:8-9"
+      ]
+    ],
+    "answer_terms": [
+      "Phao-lô",
+      "Phê-rô|Kê-pha",
+      "ngoại|không.*cắt bì",
+      "cắt bì"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "list_attributes",
+    "category": "list",
+    "question": "Nêu ba đặc điểm của đức mến trong 1 Cr 13:4-7.",
+    "expected_references": [
+      "1CO 13:4-7"
+    ],
+    "answer_term_options": [
+      "nhẫn nhục",
+      "hiền hậu",
+      "không ghen",
+      "không vênh vang",
+      "không tự đắc",
+      "không.*tư lợi",
+      "không nóng giận",
+      "không nuôi hận thù",
+      "vui.*chân thật",
+      "tha thứ",
+      "hy vọng",
+      "chịu đựng"
+    ],
+    "minimum_term_hits": 3,
+    "expected_route": "exact_scripture",
+    "maximum_term_hits": 3
+  },
+  {
+    "id": "list_twelve",
+    "category": "list",
+    "question": "Liệt kê tên mười hai Tông Đồ trong Mt 10:2-4.",
+    "expected_reference_groups": [
+      [
+        "MAT 10:2"
+      ],
+      [
+        "MAT 10:3"
+      ],
+      [
+        "MAT 10:4"
+      ]
+    ],
+    "answer_terms": [
+      "Phê-rô",
+      "An-rê",
+      "Gia-cô-bê",
+      "Gio-an",
+      "Phi-líp-phê",
+      "Ba-tô-lô-mê-ô",
+      "Tô-ma",
+      "Mát-thêu",
+      "An-phê",
+      "Ta-đê-ô|Ta-đê",
+      "Quá Khích|Nhiệt Thành",
+      "Ít-ca-ri-ốt"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "speaker_job",
+    "category": "speaker",
+    "question": "Trong Gióp 2:9, ai khuyên ông nguyền rủa Thiên Chúa?",
+    "expected_references": [
+      "JOB 2:9"
+    ],
+    "answer_terms": [
+      "vợ"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "accusation_mark",
+    "category": "speaker",
+    "question": "Trong Mc 3:22, ai nói Đức Giê-su dựa vào quỷ để trừ quỷ?",
+    "expected_references": [
+      "MRK 3:22"
+    ],
+    "answer_terms": [
+      "kinh sư"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "negate_law",
+    "category": "negation",
+    "question": "Trong Mt 5:17, Đức Giê-su nói Người đến để hủy bỏ Lề Luật phải không?",
+    "expected_references": [
+      "MAT 5:17"
+    ],
+    "answer_terms": [
+      "không|đừng",
+      "kiện toàn"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "followup_reference",
+    "category": "followup",
+    "question": "Giải thích câu đó.",
+    "chat_history": [
+      {
+        "role": "user",
+        "content": "Đọc Ga 3:16"
+      },
+      {
+        "role": "assistant",
+        "content": "Ga 3:16 nói về tình yêu Thiên Chúa đối với thế gian và việc ban Con Một."
+      }
+    ],
+    "expected_references": [
+      "JHN 3:16"
+    ],
+    "answer_terms": [
+      "yêu|tình yêu",
+      "Con Một"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "followup_person",
+    "category": "followup",
+    "question": "Vậy ông ấy đã làm gì để cứu gia đình?",
+    "chat_history": [
+      {
+        "role": "user",
+        "content": "Nô-ê là ai?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nô-ê là người được Thiên Chúa báo trước về hồng thủy."
+      }
+    ],
+    "expected_references": [
+      "HEB 11:7",
+      "GEN 6:14-22"
+    ],
+    "answer_terms": [
+      "tàu",
+      "gia đình"
+    ]
+  },
+  {
+    "id": "multi_creation",
+    "category": "multiple_references",
+    "question": "So sánh St 1:27 và St 2:7 nói gì về việc con người được tạo dựng.",
+    "expected_reference_groups": [
+      [
+        "GEN 1:27"
+      ],
+      [
+        "GEN 2:7"
+      ]
+    ],
+    "answer_terms": [
+      "hình ảnh|giống",
+      "đất|bụi",
+      "sinh khí"
+    ],
+    "expected_route": "exact_scripture"
+  },
+  {
+    "id": "missing_edition",
+    "category": "edition_filter",
+    "question": "Đọc Ga 3:16",
+    "edition_id": "missing-test-edition",
+    "unanswerable": true
+  },
+  {
+    "id": "supplementary_labels",
+    "category": "numbering",
+    "question": "Đọc Đn 3:24+ và Đn 3:24",
+    "expected_reference_groups": [
+      [
+        "DAN 3:24+"
+      ],
+      [
+        "DAN 3:24"
+      ]
+    ],
+    "answer_terms": [
+      "24\\+"
+    ],
+    "expected_route": "exact_scripture",
+    "verbatim": true
+  },
+  {
+    "id": "solomon",
+    "category": "new_identity",
+    "question": "Sa-lô-môn là ai?",
+    "expected_references": [
+      "1KI 1:1-11:43",
+      "2CH 1:1-9:31"
+    ],
+    "answer_terms": [
+      "Sa-lô-môn",
+      "vua"
+    ]
+  },
+  {
+    "id": "list_two_advice",
+    "category": "list",
+    "question": "Nêu hai lời khuyên trong Rm 12:12.",
+    "expected_references": [
+      "ROM 12:12"
+    ],
+    "answer_term_options": [
+      "vui mừng|hy vọng",
+      "kiên nhẫn",
+      "chuyên cần|cầu nguyện"
+    ],
+    "minimum_term_hits": 2,
+    "maximum_term_hits": 2,
+    "expected_route": "exact_scripture"
+  }
+]

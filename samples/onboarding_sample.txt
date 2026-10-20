@@ -1,0 +1,7 @@
+Dữ liệu minh họa do dự án tự soạn, không phải bản văn Kinh Thánh hay giáo lý.
+
+Dự án Atlas lưu tài liệu trong thư mục atlas_documents. Mỗi tài liệu được kiểm tra trước khi công bố cho người đọc. Người phụ trách kiểm tra là Lan.
+
+Nhóm Atlas họp vào thứ Ba hằng tuần. Buổi họp bắt đầu lúc 9 giờ và kết thúc lúc 10 giờ. Các thông báo được viết bằng tiếng Việt.
+
+Atlas có hai nguyên tắc: giữ nguyên nguồn gốc tài liệu và báo rõ khi thiếu bằng chứng. Tài liệu không nêu ngân sách hay người sáng lập dự án.
