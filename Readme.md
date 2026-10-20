@@ -2,12 +2,12 @@
 
 Ứng dụng Chainlit để hỏi đáp PDF, Word (`.docx`, `.doc`) và TXT tiếng Việt, tập trung vào bản văn Kinh Thánh, giáo lý và chú giải. Hệ thống kết hợp ChromaDB, tìm kiếm từ khóa BM25, embedding và chọn nguồn trước khi tạo câu trả lời.
 
-Đây là ứng dụng tự chạy trên máy cá nhân. GitHub chứa mã nguồn và tài liệu mẫu tự soạn trong `samples/`, kèm `golden_testset.json` để thử cài đặt. Người dùng tự chuẩn bị model hoặc API key và tài liệu được phép sử dụng. Repo không đóng gói model hoặc kho Kinh Thánh đã được chuyên gia nghiệm thu.
+Đây là ứng dụng tự chạy trên máy cá nhân. GitHub chứa mã nguồn; người dùng tự chuẩn bị model hoặc API key và tài liệu được phép sử dụng. Model, kho dữ liệu và golden testset hiện không được đóng gói sẵn trong repo.
 
 ## Yêu cầu
 
 - Khuyến nghị **Python 3.11**, là phiên bản của môi trường kiểm tra hiện tại. Chưa kiểm chứng cài mới trên Python 3.12/3.13; bộ phụ thuộc hiện tại không hỗ trợ Python 3.14.
-- [Ollama](https://ollama.com/download) nếu dùng LLM local hoặc các metric RAGAS cần LLM judge.
+- [Ollama](https://ollama.com/download) nếu dùng LLM local hoặc chạy benchmark hiện tại.
 - Kết nối mạng cho lần cài thư viện/tải model đầu tiên và khi gọi Google API.
 - Node.js và npm chỉ khi cần đọc `.doc`; PDF, DOCX và TXT không cần bộ đọc Node.js.
 - Đủ RAM/VRAM cho các model đã chọn. Chưa có cấu hình phần cứng tối thiểu được nghiệm thu. Chuyển LLM sang API vẫn giữ embedding và reranker local.
@@ -24,7 +24,7 @@ python -m pip install -r requirements.txt
 python -m pip check
 ```
 
-`requirements.txt` khóa các phiên bản chính, ràng buộc `fsspec` tương thích với `datasets` và dùng `langchain-community==0.4.1` cho [lỗi import của RAGAS 0.4.3](https://github.com/vibrantlabsai/ragas/issues/2745). Các adapter OpenAI/Instructor được khóa cùng nhau để tránh resolver chọn bộ quá cũ. Đây chưa phải lockfile của toàn bộ phụ thuộc bắc cầu. Không sao chép môi trường ảo hoặc sửa `site-packages` để làm ứng dụng chạy.
+`requirements.txt` khóa các phiên bản chính dựa trên môi trường hiện tại và ràng buộc `fsspec` tương thích với `datasets`. Đây chưa phải lockfile của toàn bộ phụ thuộc bắc cầu. Không sao chép môi trường ảo từ máy khác.
 
 Nếu cần PyTorch cho một bản CUDA cụ thể, chọn lệnh tại [PyTorch](https://pytorch.org/get-started/locally/) và giữ phiên bản tương thích với `requirements.txt`.
 
@@ -53,8 +53,6 @@ LLM_PROVIDERS=ollama
 OLLAMA_BASE_URL=http://localhost:11434
 OLLAMA_MODEL=qwen3:8b
 OLLAMA_TEMPERATURE=0
-OLLAMA_REASONING=false
-LLM_TIMEOUT=120
 ```
 
 Tải đúng model được cấu hình:
@@ -83,9 +81,7 @@ GOOGLE_MODEL=your_available_gemini_model
 
 Thay hai giá trị mẫu bằng key của bạn và model thực sự khả dụng trong Google AI Studio, có hỗ trợ JSON theo schema. `.env.example` dùng alias `gemini-flash-latest`; kiểm tra quyền truy cập của project trước khi dùng.
 
-Một câu hỏi có thể gọi LLM nhiều lần để lập truy vấn, chọn nguồn, trả lời và kiểm chứng. API miễn phí có giới hạn request/token; xem [hạn mức Gemini API](https://ai.google.dev/gemini-api/docs/rate-limits). Benchmark dùng cùng provider trả lời với chatbot; các metric cần judge vẫn dùng Ollama riêng.
-
-Để giảm tải máy, có thể thử Google cho LLM, `EMBEDDING_DEVICE=cpu`, `RERANK_ENABLED=false`. Đây là cấu hình thử nghiệm chưa được nghiệm thu chất lượng hoặc hiệu năng trên máy yếu. Embedding vẫn chạy local; khi thay embedding cần kho mới. Không có cam kết rằng quota miễn phí đủ cho benchmark hoặc nhiều người dùng. Giảm số mẫu và đo request/token trước khi chạy hàng loạt.
+Một câu hỏi có thể gọi LLM nhiều lần để lập truy vấn, chọn nguồn, trả lời và kiểm chứng. API miễn phí có giới hạn request/token; xem [hạn mức Gemini API](https://ai.google.dev/gemini-api/docs/rate-limits). Benchmark hiện vẫn dùng Ollama dù chatbot chọn Google.
 
 ### Nhánh Hugging Face
 
@@ -98,15 +94,14 @@ CHROMA_DB_PATH=bible_workflow_data
 CHROMA_COLLECTION=bible_workflow_v4
 EMBEDDING_MODEL_NAME=AITeamVN/Vietnamese_Embedding_v2
 EMBEDDING_DIMENSION=1024
-EMBEDDING_DEVICE=cpu
+EMBEDDING_DEVICE=auto
 RERANKER_MODEL_NAME=AITeamVN/Vietnamese_Reranker
-RERANKER_DEVICE=cpu
+RERANKER_DEVICE=auto
 RERANK_ENABLED=true
 ```
 
 - Tên model Hugging Face được tải khi cần. Có thể dùng đường dẫn tới model local đã tải đầy đủ.
 - `EMBEDDING_DEVICE` và `RERANKER_DEVICE` nhận `auto`, `cpu`, `cuda`. `auto` chọn CUDA khi PyTorch nhận GPU. Dùng `cpu` để chuyển phần tương ứng khỏi GPU; tốc độ phụ thuộc máy.
-- Mẫu cấu hình dùng CPU cho encoder để dành VRAM cho Ollama. Trên máy RTX 5060 Laptop 8 GB đã thử, lượt encoder `auto` gặp chậm/timeout; lượt embedding CPU hoàn thành cả ba câu retrieval thử. Đây là pilot trên một máy với trạng thái tải model khác nhau, không phải cấu hình tối thiểu. Chỉ đổi sang `auto`/`cuda` sau khi đo bộ nhớ và độ trễ của cả hệ thống.
 - `RERANK_ENABLED=false` tắt CrossEncoder ở nhánh sử dụng nó. LLM chọn bằng chứng trong luồng Kinh Thánh vẫn có thể được gọi.
 - `CHROMA_DB_PATH` tương đối tính từ thư mục ứng dụng. Kho Kinh Thánh cần Chroma và `scripture.sqlite3` cùng phiên nạp; sao lưu toàn bộ thư mục dữ liệu.
 - Collection kiểm tra định danh embedding, số chiều và schema. Đường dẫn local và tên Hugging Face có thể bị coi là hai định danh khác nhau. Giữ cấu hình đã tạo kho; không bỏ kiểm tra tương thích để mở kho.
@@ -130,8 +125,6 @@ Mở `http://localhost:8000`. Thêm `-w` để tự tải lại khi phát triể
 2. Bấm **Thêm tài liệu** hoặc kéo PDF/DOCX/DOC/TXT vào chat. Lần đầu có thể chờ tải model. Không cần LLM để tạo embedding tài liệu.
 3. Kiểm tra thông báo nạp, cảnh báo và nguồn đính kèm khi hỏi đáp. Chọn đúng loại nếu nhận diện tự động không phù hợp.
 4. **Kho tài liệu** cho phép xem, tóm tắt và xóa tài liệu. **Xóa toàn bộ** reset collection vector sau xác nhận; bản gốc, export và snapshot audit trên đĩa không tự bị xóa.
-
-Để thử từ repo mới, nạp `samples/onboarding_sample.txt` với loại **generic**, rồi hỏi “Dự án Atlas lưu tài liệu ở đâu?”. Dùng bộ `golden_testset.json` đi kèm cho kho có tài liệu mẫu này; nó không đánh giá các nguồn Kinh Thánh của bạn.
 
 PDF mặc định tối đa 100 MB và 3.500 trang, theo `.env`. DOCX/TXT dùng vị trí đoạn/dòng thay cho số trang PDF. TXT cần Unicode UTF-8 hoặc UTF-16 có BOM. DOC phụ thuộc bộ đọc Node.js ở bước 1.
 
@@ -166,7 +159,7 @@ RAGAS_JUDGE_MODEL=qwen3.5:9b
 RAGAS_EMBEDDING_MODEL=AITeamVN/Vietnamese_Embedding_v2
 ```
 
-Đường dẫn testset tương đối tính từ thư mục chạy lệnh. File cần là mảng JSON; mỗi mẫu có `id`, `user_input`, `reference_contexts` (danh sách đoạn nguồn), `reference` (đáp án chuẩn), và có thể thêm `metadata`. Đáp án/đoạn nguồn phải khớp kho và bản dịch được đánh giá. File đi kèm repo chỉ gồm dữ liệu tự soạn cho onboarding. Testset Kinh Thánh cũ cần được đối chiếu lại nguồn, bản dịch và phiên bản kho trước khi dùng làm bằng chứng nghiệm thu.
+Đường dẫn testset tương đối tính từ thư mục chạy lệnh. File cần là mảng JSON; mỗi mẫu có `id`, `user_input`, `reference_contexts` (danh sách đoạn nguồn), `reference` (đáp án chuẩn), và có thể thêm `metadata`. Đáp án/đoạn nguồn phải khớp kho và bản dịch được đánh giá. Nếu không đặt biến, code tìm `golden_testset.json` ở thư mục ứng dụng rồi thư mục cha; file này hiện chưa nằm trong repo.
 
 Nếu dùng judge mặc định, tải thêm model:
 
@@ -176,9 +169,9 @@ ollama pull qwen3.5:9b
 
 Bấm **Đánh giá RAG** trong ứng dụng:
 
-- **Nhanh**: mặc định chấm `non_llm_context_recall`; bước truy xuất vẫn có thể gọi provider đang chọn để lập truy vấn/chọn nguồn.
+- **Nhanh**: mặc định chấm `non_llm_context_recall`; bước truy xuất vẫn có thể gọi Ollama để lập truy vấn/chọn nguồn.
 - **Đầy đủ**: thêm các chỉ số nội dung với judge và embedding đánh giá.
-- Cả hai dùng `LLM_PROVIDERS` cho các bước retrieval/trả lời cần LLM; judge chọn riêng bằng `RAGAS_JUDGE_MODEL`. Kết quả được lưu trong thư mục `evaluation/` của kho, kèm cấu hình, mã băm code/testset, danh mục nguồn và revision collection. `requests` đếm lần gọi provider sau kiểm tra đầu vào cục bộ; SDK retry có thể tạo thêm lần gọi HTTP. Token chỉ cộng khi provider báo usage: `token_reports=0` nghĩa là chưa biết, không phải miễn phí. Diagnostics tính bước chuẩn bị câu trả lời, không cộng các lần chấm của RAGAS judge.
+- Cả hai dùng `OLLAMA_MODEL` cho các bước retrieval/trả lời cần LLM; judge chọn riêng bằng `RAGAS_JUDGE_MODEL`. Điểm này không chứng nhận chatbot Google nếu chưa thay luồng benchmark.
 - Embedding đánh giá cùng model thì dùng chung instance. Model khác dùng `RAGAS_EMBEDDING_DEVICE=cpu` mặc định.
 
 Bộ câu hỏi cơ bản riêng có thể chạy với model thật sau khi kho sẵn sàng:
@@ -188,17 +181,6 @@ python -X utf8 evaluate_bible_answers.py --answers --output bible_workflow_data/
 ```
 
 So khớp tham chiếu/từ khóa chỉ hỗ trợ kiểm tra hồi quy. Cần đọc lại đáp án và bằng chứng; điểm RAGAS hay trạng thái có dẫn nguồn không chứng minh mọi diễn giải đều đúng.
-
-`regression_passed` ghi kết quả kiểm tra tự động. Đáp án do model sinh giữ `passed=null` cho đến khi người đọc chấm; exit code 2 nghĩa là còn chờ duyệt. Quy trình chấm, hiệu chuẩn judge, tạo holdout và so sánh từng bước nằm trong [evaluation/REVIEW_GUIDE.md](evaluation/REVIEW_GUIDE.md).
-
-```powershell
-python scripts/benchmark_ablation.py --cases bible_basic_questions.json --output bible_workflow_data/evaluation/ablation.json
-python scripts/audit_corpus.py --output bible_workflow_data/evaluation/corpus-review.json
-python scripts/probe_models.py --provider ollama --output release_checks/ollama.json
-python scripts/check_release.py --output release_checks/files.json
-```
-
-Ablation mặc định so retrieval trên cùng câu hỏi/kho; `--answers` thêm bản nháp offline và đáp án kiểm chứng để người đọc so sánh. Không diễn giải hit-rate truy xuất thành chất lượng câu trả lời. Probe provider chỉ gọi một yêu cầu JSON tổng hợp, không phải benchmark toàn bộ RAG.
 
 ## Phục hồi và lỗi thường gặp
 
@@ -214,17 +196,6 @@ Ablation mặc định so retrieval trên cùng câu hỏi/kho; `--answers` thê
 
 Phiên nạp có nhật ký: khi khởi động lại, dữ liệu đang ghi dở được rollback; phiên đã quyết định commit được hoàn tất. Dữ liệu cũ được giữ đến khi phiên mới đủ điều kiện công bố. Kho cũ thiếu nhật ký hoặc danh tính không được tự sửa chỉ để vượt kiểm tra.
 
-## Giới hạn hiện tại
-
-- Chưa nghiệm thu cài mới trên nhiều hệ điều hành hoặc hiệu năng máy yếu. Tên module `loaddocs/document.py` và `loaddocs/embedding.py` trong Git đã dùng chữ thường.
-- `OLLAMA_REASONING=false` là mặc định; có thể bật `true` nếu model hỗ trợ. Provider từ chối đầu ra kết thúc do hết token và kiểm tra JSON/schema trước khi dùng; cần đo lại chất lượng khi thay model/reasoning.
-- Mọi nguồn generic/nguồn trộn đi qua cùng bước sinh và kiểm chứng claim. Reranker chia cửa sổ token để giữ cả cuối đoạn dài; lấy điểm cao nhất giữa các cửa sổ có thể thiên về đoạn dài và cần theo dõi bằng ablation.
-- Hồ sơ bản dịch, dữ liệu cách ly và phạm vi kho cần người duyệt. Không mặc định kho bao phủ toàn bộ Kinh Thánh.
-- Báo cáo cũ không chứng nhận chất lượng phiên bản hiện tại. API miễn phí và model thay thế cần được kiểm chứng riêng.
-- Chưa có phân quyền quản trị/tách kho theo người dùng. Chưa phù hợp công bố như dịch vụ nhiều người dùng có quyền tải lên/xóa chung.
-
-Xem [evaluation/RELEASE_STATUS.md](evaluation/RELEASE_STATUS.md) để biết bằng chứng đã chạy và các điều kiện còn chờ chủ dự án/người duyệt. Không coi test tự động thành chứng nhận nội dung toàn bộ kho.
-
 ## Cấu trúc và chia sẻ mã nguồn
 
 | Đường dẫn | Vai trò |
@@ -239,5 +210,3 @@ Xem [evaluation/RELEASE_STATUS.md](evaluation/RELEASE_STATUS.md) để biết b�
 | `tests/` | Kiểm thử chức năng và hồi quy. |
 
 `chainlit.md` là nội dung giới thiệu được Chainlit đọc; các Markdown hướng dẫn khác không tự trở thành system prompt hoặc dữ liệu RAG.
-
-Mã nguồn dự án dùng [MIT License](LICENSE). Model và tài liệu bên thứ ba giữ giấy phép riêng. Không commit `.env`, bản sao `.env`, model hoặc backup kho. Khóa đã từng xuất hiện trong chat/Git phải được thu hồi tại tài khoản phát hành; `.gitignore` và bỏ theo dõi file không vô hiệu hóa khóa hoặc xóa nó khỏi lịch sử Git.
