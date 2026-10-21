@@ -284,7 +284,7 @@ class DocumentTypeTests(unittest.TestCase):
         review=json.loads(llm._generate_with_fallback.call_args.args[0])
         self.assertEqual('Nêu hai đặc điểm của X.',review['question'])
         self.assertEqual('Đặc điểm X',review['resolved_question'])
-        details=review['claims'][0]['paragraphs'][0]['details']
+        details=review['sources'][0]['details']
         self.assertIn('Loại: Giáo lý',details)
         self.assertIn('Số mục: 2',details)
 

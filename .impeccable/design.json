@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T11:40:27Z",
+  "title": "Design System: Thư viện Kinh Thánh",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "primary",
+        "tonalRamp": [
+          "oklch(15.00% 0.1031 5.39)",
+          "oklch(26.43% 0.1031 5.39)",
+          "oklch(37.86% 0.1031 5.39)",
+          "oklch(49.29% 0.1031 5.39)",
+          "oklch(60.71% 0.1031 5.39)",
+          "oklch(72.14% 0.1031 5.39)",
+          "oklch(83.57% 0.1031 5.39)",
+          "oklch(95.00% 0.1031 5.39)"
+        ]
+      },
+      "primary-foreground": {
+        "role": "primary",
+        "displayName": "primary foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95.00% 0.0000 89.88)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "background",
+        "tonalRamp": [
+          "oklch(15.00% 0.0038 345.25)",
+          "oklch(26.43% 0.0038 345.25)",
+          "oklch(37.86% 0.0038 345.25)",
+          "oklch(49.29% 0.0038 345.25)",
+          "oklch(60.71% 0.0038 345.25)",
+          "oklch(72.14% 0.0038 345.25)",
+          "oklch(83.57% 0.0038 345.25)",
+          "oklch(95.00% 0.0038 345.25)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0244 343.71)",
+          "oklch(26.43% 0.0244 343.71)",
+          "oklch(37.86% 0.0244 343.71)",
+          "oklch(49.29% 0.0244 343.71)",
+          "oklch(60.71% 0.0244 343.71)",
+          "oklch(72.14% 0.0244 343.71)",
+          "oklch(83.57% 0.0244 343.71)",
+          "oklch(95.00% 0.0244 343.71)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "card",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95.00% 0.0000 89.88)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "secondary",
+        "tonalRamp": [
+          "oklch(15.00% 0.0100 349.03)",
+          "oklch(26.43% 0.0100 349.03)",
+          "oklch(37.86% 0.0100 349.03)",
+          "oklch(49.29% 0.0100 349.03)",
+          "oklch(60.71% 0.0100 349.03)",
+          "oklch(72.14% 0.0100 349.03)",
+          "oklch(83.57% 0.0100 349.03)",
+          "oklch(95.00% 0.0100 349.03)"
+        ]
+      },
+      "secondary-foreground": {
+        "role": "neutral",
+        "displayName": "secondary foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0445 344.53)",
+          "oklch(26.43% 0.0445 344.53)",
+          "oklch(37.86% 0.0445 344.53)",
+          "oklch(49.29% 0.0445 344.53)",
+          "oklch(60.71% 0.0445 344.53)",
+          "oklch(72.14% 0.0445 344.53)",
+          "oklch(83.57% 0.0445 344.53)",
+          "oklch(95.00% 0.0445 344.53)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.0068 345.33)",
+          "oklch(26.43% 0.0068 345.33)",
+          "oklch(37.86% 0.0068 345.33)",
+          "oklch(49.29% 0.0068 345.33)",
+          "oklch(60.71% 0.0068 345.33)",
+          "oklch(72.14% 0.0068 345.33)",
+          "oklch(83.57% 0.0068 345.33)",
+          "oklch(95.00% 0.0068 345.33)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "muted foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0284 343.12)",
+          "oklch(26.43% 0.0284 343.12)",
+          "oklch(37.86% 0.0284 343.12)",
+          "oklch(49.29% 0.0284 343.12)",
+          "oklch(60.71% 0.0284 343.12)",
+          "oklch(72.14% 0.0284 343.12)",
+          "oklch(83.57% 0.0284 343.12)",
+          "oklch(95.00% 0.0284 343.12)"
+        ]
+      },
+      "accent": {
+        "role": "neutral",
+        "displayName": "accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.0100 349.03)",
+          "oklch(26.43% 0.0100 349.03)",
+          "oklch(37.86% 0.0100 349.03)",
+          "oklch(49.29% 0.0100 349.03)",
+          "oklch(60.71% 0.0100 349.03)",
+          "oklch(72.14% 0.0100 349.03)",
+          "oklch(83.57% 0.0100 349.03)",
+          "oklch(95.00% 0.0100 349.03)"
+        ]
+      },
+      "accent-foreground": {
+        "role": "neutral",
+        "displayName": "accent foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0892 5.21)",
+          "oklch(26.43% 0.0892 5.21)",
+          "oklch(37.86% 0.0892 5.21)",
+          "oklch(49.29% 0.0892 5.21)",
+          "oklch(60.71% 0.0892 5.21)",
+          "oklch(72.14% 0.0892 5.21)",
+          "oklch(83.57% 0.0892 5.21)",
+          "oklch(95.00% 0.0892 5.21)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "border",
+        "tonalRamp": [
+          "oklch(15.00% 0.0128 345.52)",
+          "oklch(26.43% 0.0128 345.52)",
+          "oklch(37.86% 0.0128 345.52)",
+          "oklch(49.29% 0.0128 345.52)",
+          "oklch(60.71% 0.0128 345.52)",
+          "oklch(72.14% 0.0128 345.52)",
+          "oklch(83.57% 0.0128 345.52)",
+          "oklch(95.00% 0.0128 345.52)"
+        ]
+      },
+      "input": {
+        "role": "neutral",
+        "displayName": "input",
+        "tonalRamp": [
+          "oklch(15.00% 0.0173 345.68)",
+          "oklch(26.43% 0.0173 345.68)",
+          "oklch(37.86% 0.0173 345.68)",
+          "oklch(49.29% 0.0173 345.68)",
+          "oklch(60.71% 0.0173 345.68)",
+          "oklch(72.14% 0.0173 345.68)",
+          "oklch(83.57% 0.0173 345.68)",
+          "oklch(95.00% 0.0173 345.68)"
+        ]
+      },
+      "sidebar-background": {
+        "role": "neutral",
+        "displayName": "sidebar background",
+        "tonalRamp": [
+          "oklch(15.00% 0.0051 345.28)",
+          "oklch(26.43% 0.0051 345.28)",
+          "oklch(37.86% 0.0051 345.28)",
+          "oklch(49.29% 0.0051 345.28)",
+          "oklch(60.71% 0.0051 345.28)",
+          "oklch(72.14% 0.0051 345.28)",
+          "oklch(83.57% 0.0051 345.28)",
+          "oklch(95.00% 0.0051 345.28)"
+        ]
+      },
+      "sidebar-accent": {
+        "role": "neutral",
+        "displayName": "sidebar accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.0129 349.12)",
+          "oklch(26.43% 0.0129 349.12)",
+          "oklch(37.86% 0.0129 349.12)",
+          "oklch(49.29% 0.0129 349.12)",
+          "oklch(60.71% 0.0129 349.12)",
+          "oklch(72.14% 0.0129 349.12)",
+          "oklch(83.57% 0.0129 349.12)",
+          "oklch(95.00% 0.0129 349.12)"
+        ]
+      },
+      "dark-primary": {
+        "role": "primary",
+        "displayName": "dark primary",
+        "tonalRamp": [
+          "oklch(15.00% 0.0786 0.49)",
+          "oklch(26.43% 0.0786 0.49)",
+          "oklch(37.86% 0.0786 0.49)",
+          "oklch(49.29% 0.0786 0.49)",
+          "oklch(60.71% 0.0786 0.49)",
+          "oklch(72.14% 0.0786 0.49)",
+          "oklch(83.57% 0.0786 0.49)",
+          "oklch(95.00% 0.0786 0.49)"
+        ]
+      },
+      "dark-primary-foreground": {
+        "role": "primary",
+        "displayName": "dark primary foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0329 344.76)",
+          "oklch(26.43% 0.0329 344.76)",
+          "oklch(37.86% 0.0329 344.76)",
+          "oklch(49.29% 0.0329 344.76)",
+          "oklch(60.71% 0.0329 344.76)",
+          "oklch(72.14% 0.0329 344.76)",
+          "oklch(83.57% 0.0329 344.76)",
+          "oklch(95.00% 0.0329 344.76)"
+        ]
+      },
+      "dark-background": {
+        "role": "neutral",
+        "displayName": "dark background",
+        "tonalRamp": [
+          "oklch(15.00% 0.0117 343.09)",
+          "oklch(26.43% 0.0117 343.09)",
+          "oklch(37.86% 0.0117 343.09)",
+          "oklch(49.29% 0.0117 343.09)",
+          "oklch(60.71% 0.0117 343.09)",
+          "oklch(72.14% 0.0117 343.09)",
+          "oklch(83.57% 0.0117 343.09)",
+          "oklch(95.00% 0.0117 343.09)"
+        ]
+      },
+      "dark-foreground": {
+        "role": "neutral",
+        "displayName": "dark foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0087 345.39)",
+          "oklch(26.43% 0.0087 345.39)",
+          "oklch(37.86% 0.0087 345.39)",
+          "oklch(49.29% 0.0087 345.39)",
+          "oklch(60.71% 0.0087 345.39)",
+          "oklch(72.14% 0.0087 345.39)",
+          "oklch(83.57% 0.0087 345.39)",
+          "oklch(95.00% 0.0087 345.39)"
+        ]
+      },
+      "dark-card": {
+        "role": "neutral",
+        "displayName": "dark card",
+        "tonalRamp": [
+          "oklch(15.00% 0.0157 343.23)",
+          "oklch(26.43% 0.0157 343.23)",
+          "oklch(37.86% 0.0157 343.23)",
+          "oklch(49.29% 0.0157 343.23)",
+          "oklch(60.71% 0.0157 343.23)",
+          "oklch(72.14% 0.0157 343.23)",
+          "oklch(83.57% 0.0157 343.23)",
+          "oklch(95.00% 0.0157 343.23)"
+        ]
+      },
+      "dark-secondary": {
+        "role": "neutral",
+        "displayName": "dark secondary",
+        "tonalRamp": [
+          "oklch(15.00% 0.0231 343.49)",
+          "oklch(26.43% 0.0231 343.49)",
+          "oklch(37.86% 0.0231 343.49)",
+          "oklch(49.29% 0.0231 343.49)",
+          "oklch(60.71% 0.0231 343.49)",
+          "oklch(72.14% 0.0231 343.49)",
+          "oklch(83.57% 0.0231 343.49)",
+          "oklch(95.00% 0.0231 343.49)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "dark muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.0213 343.37)",
+          "oklch(26.43% 0.0213 343.37)",
+          "oklch(37.86% 0.0213 343.37)",
+          "oklch(49.29% 0.0213 343.37)",
+          "oklch(60.71% 0.0213 343.37)",
+          "oklch(72.14% 0.0213 343.37)",
+          "oklch(83.57% 0.0213 343.37)",
+          "oklch(95.00% 0.0213 343.37)"
+        ]
+      },
+      "dark-muted-foreground": {
+        "role": "neutral",
+        "displayName": "dark muted foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0246 345.98)",
+          "oklch(26.43% 0.0246 345.98)",
+          "oklch(37.86% 0.0246 345.98)",
+          "oklch(49.29% 0.0246 345.98)",
+          "oklch(60.71% 0.0246 345.98)",
+          "oklch(72.14% 0.0246 345.98)",
+          "oklch(83.57% 0.0246 345.98)",
+          "oklch(95.00% 0.0246 345.98)"
+        ]
+      },
+      "dark-accent": {
+        "role": "neutral",
+        "displayName": "dark accent",
+        "tonalRamp": [
+          "oklch(15.00% 0.0321 343.94)",
+          "oklch(26.43% 0.0321 343.94)",
+          "oklch(37.86% 0.0321 343.94)",
+          "oklch(49.29% 0.0321 343.94)",
+          "oklch(60.71% 0.0321 343.94)",
+          "oklch(72.14% 0.0321 343.94)",
+          "oklch(83.57% 0.0321 343.94)",
+          "oklch(95.00% 0.0321 343.94)"
+        ]
+      },
+      "dark-accent-foreground": {
+        "role": "neutral",
+        "displayName": "dark accent foreground",
+        "tonalRamp": [
+          "oklch(15.00% 0.0575 359.62)",
+          "oklch(26.43% 0.0575 359.62)",
+          "oklch(37.86% 0.0575 359.62)",
+          "oklch(49.29% 0.0575 359.62)",
+          "oklch(60.71% 0.0575 359.62)",
+          "oklch(72.14% 0.0575 359.62)",
+          "oklch(83.57% 0.0575 359.62)",
+          "oklch(95.00% 0.0575 359.62)"
+        ]
+      },
+      "dark-border": {
+        "role": "neutral",
+        "displayName": "dark border",
+        "tonalRamp": [
+          "oklch(15.00% 0.0242 343.20)",
+          "oklch(26.43% 0.0242 343.20)",
+          "oklch(37.86% 0.0242 343.20)",
+          "oklch(49.29% 0.0242 343.20)",
+          "oklch(60.71% 0.0242 343.20)",
+          "oklch(72.14% 0.0242 343.20)",
+          "oklch(83.57% 0.0242 343.20)",
+          "oklch(95.00% 0.0242 343.20)"
+        ]
+      },
+      "dark-input": {
+        "role": "neutral",
+        "displayName": "dark input",
+        "tonalRamp": [
+          "oklch(15.00% 0.0283 343.24)",
+          "oklch(26.43% 0.0283 343.24)",
+          "oklch(37.86% 0.0283 343.24)",
+          "oklch(49.29% 0.0283 343.24)",
+          "oklch(60.71% 0.0283 343.24)",
+          "oklch(72.14% 0.0283 343.24)",
+          "oklch(83.57% 0.0283 343.24)",
+          "oklch(95.00% 0.0283 343.24)"
+        ]
+      },
+      "dark-sidebar-background": {
+        "role": "neutral",
+        "displayName": "dark sidebar background",
+        "tonalRamp": [
+          "oklch(15.00% 0.0138 343.17)",
+          "oklch(26.43% 0.0138 343.17)",
+          "oklch(37.86% 0.0138 343.17)",
+          "oklch(49.29% 0.0138 343.17)",
+          "oklch(60.71% 0.0138 343.17)",
+          "oklch(72.14% 0.0138 343.17)",
+          "oklch(83.57% 0.0138 343.17)",
+          "oklch(95.00% 0.0138 343.17)"
+        ]
+      },
+      "logo-ink": {
+        "role": "neutral",
+        "displayName": "Logo ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 0.00)",
+          "oklch(26.43% 0.0000 0.00)",
+          "oklch(37.86% 0.0000 0.00)",
+          "oklch(49.29% 0.0000 0.00)",
+          "oklch(60.71% 0.0000 0.00)",
+          "oklch(72.14% 0.0000 0.00)",
+          "oklch(83.57% 0.0000 0.00)",
+          "oklch(95.00% 0.0000 0.00)"
+        ]
+      },
+      "logo-shadow": {
+        "role": "neutral",
+        "displayName": "Logo oval",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 0.00)",
+          "oklch(26.43% 0.0000 0.00)",
+          "oklch(37.86% 0.0000 0.00)",
+          "oklch(49.29% 0.0000 0.00)",
+          "oklch(60.71% 0.0000 0.00)",
+          "oklch(72.14% 0.0000 0.00)",
+          "oklch(83.57% 0.0000 0.00)",
+          "oklch(95.00% 0.0000 0.00)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Reading heading",
+        "purpose": "Welcome and message level-one headings; 28px at the mobile breakpoint."
+      },
+      "body": {
+        "displayName": "Answer text",
+        "purpose": "Long-form answer reading; 15px with line height 1.75 at the mobile breakpoint."
+      },
+      "runtime-value": {
+        "displayName": "Configuration value",
+        "purpose": "Monospace runtime metadata with tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "runtime-dialog",
+        "value": "0 20px 70px rgb(0 0 0 / 22%)",
+        "purpose": "Shared diffuse elevation for runtime information, document-library and upload dialogs."
+      },
+      {
+        "name": "upload-status-bubble",
+        "value": "0 8px 24px rgb(0 0 0 / 16%)",
+        "purpose": "Transient acknowledged cancellation or request-timeout feedback above the upload window."
+      }
+    ],
+    "motion": [
+      {
+        "name": "composer-border",
+        "value": "border-color 160ms ease",
+        "purpose": "Composer focus-within stroke transition; removed under prefers-reduced-motion: reduce."
+      },
+      {
+        "name": "upload-status-hold",
+        "value": "3500ms",
+        "purpose": "Status bubble stays visible before its exit; reopening upload clears the old bubble."
+      },
+      {
+        "name": "upload-status-fade",
+        "value": "opacity 500ms ease-out",
+        "purpose": "Fade cancellation/timeout feedback before removal; transition removed for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "640px"
+      },
+      {
+        "name": "history-drawer",
+        "value": "900px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Information button",
+      "kind": "button",
+      "refersTo": "info-button",
+      "description": "Custom header action; opens runtime configuration. The preview represents its desktop appearance.",
+      "html": "<button class=\"ds-info\" type=\"button\">Thông tin</button>",
+      "css": ".ds-info { height:40px; padding:0 12px; border:1px solid hsl(var(--border)); border-radius:9px; background:hsl(var(--card)); color:hsl(var(--foreground)); font:500 13px/1 \"Segoe UI\",sans-serif; white-space:nowrap; cursor:pointer; box-shadow:none; } .ds-info:hover { background:hsl(var(--accent)); } .ds-info:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; }"
+    },
+    {
+      "name": "Composer field",
+      "kind": "input",
+      "refersTo": "composer",
+      "description": "Custom composer surface and textarea typography. Composer paperclip/loading controls are hidden by CSS; uploads begin from the toolbar preparation window. Native settings/submit controls are omitted from this visual fragment.",
+      "html": "<div class=\"ds-composer\"><textarea class=\"ds-chat-input\" rows=\"2\" aria-label=\"Câu hỏi\" placeholder=\"Nhập câu hỏi...\"></textarea></div>",
+      "css": ".ds-composer { background:hsl(var(--card)); border:1px solid hsl(var(--input)); border-radius:16px; padding:16px 18px 12px; transition:border-color 160ms ease; } .ds-composer:focus-within { border-color:hsl(var(--primary)); } .ds-chat-input { width:100%; min-height:46px; font-family:\"Segoe UI\",system-ui,sans-serif; font-size:16px; line-height:1.6; color:hsl(var(--foreground)); background:transparent; caret-color:hsl(var(--primary)); } .ds-chat-input::placeholder { color:hsl(var(--muted-foreground)); opacity:1; } .ds-chat-input:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } @media(max-width:640px) { .ds-composer { padding:12px; } } @media(prefers-reduced-motion:reduce) { .ds-composer { transition:none; animation:none; } }"
+    },
+    {
+      "name": "Inline source reference",
+      "kind": "chip",
+      "refersTo": "source-link",
+      "description": "Numbered citation treatment. In the app, trusted mouse/keyboard activation opens the matching native Nguồn N pane; automatic opening is suppressed and a new user message resets intent. Preview href is illustrative; native source rendering is not replicated.",
+      "html": "<a class=\"ds-source\" href=\"#source-preview\">Nguồn 1</a>",
+      "css": ".ds-source { display:inline; padding:2px 8px; border-radius:6px; background:hsl(var(--accent)); color:hsl(var(--accent-foreground)); font-family:\"Segoe UI\",system-ui,sans-serif; font-size:12px; font-weight:650; line-height:1.6; text-transform:none; text-decoration:none; vertical-align:baseline; } .ds-source:hover { background:hsl(var(--primary)); color:hsl(var(--primary-foreground)); } .ds-source:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
+    },
+    {
+      "name": "Header book identity",
+      "kind": "custom",
+      "refersTo": "brand-mark",
+      "description": "Shared transparent cross-and-layered-book asset above a gray oval; no berry tile. The app loads the same SVG image for header, welcome and avatar and inverts it in dark mode. Preview inlines identical geometry for standalone rendering.",
+      "html": "<div class=\"ds-brand\"><span class=\"ds-mark\"><svg class=\"ds-logo\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"70 88 486 458\" fill=\"#000\">\r\n  <title>Sách Kinh Thánh và thánh giá</title>\r\n  <ellipse cx=\"313\" cy=\"526\" rx=\"239\" ry=\"13\" fill=\"#e6e6e6\"/>\r\n  <path d=\"M289 104h47v59h70v46h-70v179l-23 33-24-33V209h-70v-46h70z\"/>\r\n  <path d=\"M171 189c-13 1-19 10-19 23v160c63-20 120-1 161 64-39-80-84-100-141-89V189zm284 0c13 1 19 10 19 23v160c-63-20-120-1-161 64 39-80 84-100 141-89V189z\"/>\r\n  <path d=\"M140 238c-13 3-19 12-19 24v156c80-36 140-23 192 26-51-66-112-77-172-52V238zm346 0c13 3 19 12 19 24v156c-80-36-140-23-192 26 51-66 112-77 172-52V238z\"/>\r\n  <path d=\"M103 440c77-35 143-28 210 7 67-35 133-42 210-7 16 8 6 30-8 25-72-26-130-29-158-7-10 42-79 42-88 0-28-22-86-19-158 7-15 5-24-17-8-25z\"/>\r\n</svg></span><span class=\"ds-copy\"><strong>Thư viện Kinh Thánh</strong><span>Đọc hiểu · Tra cứu · Đối chiếu</span></span></div>",
+      "css": ".ds-brand { display:flex; align-items:center; gap:12px; margin-left:6px; font-family:\"Segoe UI\",system-ui,sans-serif; color:hsl(var(--foreground)); } .ds-mark { display:grid; place-items:center; width:42px; height:42px; flex-shrink:0; } .ds-logo { width:100%; height:100%; } :host-context(.dark) .ds-logo { filter:invert(1); } .ds-copy { display:flex; flex-direction:column; gap:2px; } .ds-copy strong { font-size:17px; font-weight:650; letter-spacing:-.02em; } .ds-copy > span { font-size:12px; color:hsl(var(--muted-foreground)); } @media(max-width:640px) { .ds-brand { margin-left:0; gap:8px; } .ds-mark { display:none; } .ds-copy strong { font-size:14px; max-width:120px; line-height:1.35; } .ds-copy > span { display:none; } }"
+    },
+    {
+      "name": "Runtime information dialog",
+      "kind": "card",
+      "refersTo": "runtime-dialog",
+      "description": "Visual dialog fragment with sticky header and one metadata row; application focus/close behavior lives in about.js.",
+      "html": "<section class=\"ds-runtime\" aria-label=\"Cấu hình hiện tại\"><header class=\"ds-runtime-header\"><h2>Cấu hình hiện tại</h2><button class=\"ds-close\" type=\"button\" aria-label=\"Đóng\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button></header><div class=\"ds-runtime-content\"><h3>Runtime</h3><dl class=\"ds-runtime-row\"><dt>Framework</dt><dd>Chainlit</dd></dl></div></section>",
+      "css": ".ds-runtime { width:min(520px,100%); overflow-y:auto; border:0; border-radius:16px; background:hsl(var(--card)); color:hsl(var(--foreground)); box-shadow:0 20px 70px rgb(0 0 0 / 22%); font-family:\"Segoe UI\",system-ui,sans-serif; } .ds-runtime-header { position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:52px; padding:16px 20px; border-bottom:1px solid hsl(var(--border)); background:hsl(var(--card)); } .ds-runtime-header h2 { margin:0; font-size:19px; font-weight:650; letter-spacing:0; } .ds-close { display:grid; place-items:center; width:40px; height:40px; padding:0; border:0; border-radius:6px; background:transparent; color:hsl(var(--muted-foreground)); font-size:24px; line-height:30px; cursor:pointer; } .ds-close:hover { background:hsl(var(--accent)); } .ds-close:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:2px; } .ds-runtime-content { padding:4px 24px 24px; } .ds-runtime-content h3 { margin:16px 0 10px; color:hsl(var(--primary)); font-size:14px; font-weight:650; } .ds-runtime-row { display:grid; grid-template-columns:minmax(120px,.8fr) minmax(0,1.5fr); gap:12px; margin:0; } .ds-runtime-row dt,.ds-runtime-row dd { margin:0; font-size:13px; line-height:1.65; } .ds-runtime-row dt { color:hsl(var(--muted-foreground)); } .ds-runtime-row dd { overflow-wrap:anywhere; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums; } @media(max-width:640px) { .ds-runtime-row { grid-template-columns:1fr; gap:2px; } }"
+    },
+    {
+      "name": "Function bar",
+      "kind": "nav",
+      "description": "Top toolbar visual fragment. History toggles the sidebar/drawer; Kho tài liệu opens its native-catalog modal; Thêm tài liệu opens preparation before starting the native upload callback. Preview controls have no callbacks.",
+      "html": "<nav class=\"ds-function-bar\" aria-label=\"Thanh công cụ\"><div class=\"ds-function-heading\"><span>Thanh công cụ</span><button class=\"ds-history-toggle\" type=\"button\" aria-label=\"Đóng lịch sử trò chuyện\" aria-expanded=\"true\" title=\"Đóng lịch sử trò chuyện\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 11a9 9 0 1 0 3-6.7L3 7\"/><path d=\"M3 3v4h4M12 7v5l3 2\"/></svg><span>Lịch sử</span></button></div><div class=\"ds-function-actions\"><button class=\"ds-action\" type=\"button\">Thêm tài liệu</button><button class=\"ds-action\" type=\"button\">Kho tài liệu</button><button class=\"ds-action\" type=\"button\">Đánh giá RAG</button><button class=\"ds-action ds-action-danger\" type=\"button\">Xóa toàn bộ</button></div></nav>",
+      "css": ".ds-function-bar { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:8px 24px; min-height:64px; padding:8px 28px; background:hsl(var(--card)); border-bottom:1px solid hsl(var(--border)); font-family:\"Segoe UI\",system-ui,sans-serif; } .ds-function-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; } .ds-function-heading > span { color:hsl(var(--muted-foreground)); font-size:12px; white-space:nowrap; } .ds-function-actions { display:flex; align-items:center; gap:4px; flex-wrap:wrap; } .ds-action { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:40px; padding:8px 12px; border:0; border-radius:8px; background:transparent; font-family:inherit; font-size:13px; font-weight:550; color:hsl(var(--foreground)); cursor:pointer; } .ds-action:hover:not(:disabled) { background:hsl(var(--accent)); color:hsl(var(--accent-foreground)); } .ds-action:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-action:disabled { opacity:.45; cursor:not-allowed; } .ds-action-danger { margin-left:12px; border-left:1px solid hsl(var(--border)); border-radius:0 8px 8px 0; } .ds-action-danger:hover:not(:disabled) { color:hsl(0 65% 40%); } :host-context(.dark) .ds-action-danger:hover:not(:disabled) { color:hsl(0 80% 75%); } @media(max-width:1100px) and (min-width:901px) { .ds-function-bar { padding-inline:16px; gap:12px; } .ds-function-heading > span { display:none; } } @media(max-width:900px) { .ds-function-bar { padding:8px 16px; grid-template-columns:minmax(0,1fr); align-items:stretch; gap:4px; } .ds-function-actions { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); } .ds-action { padding:8px; } .ds-action-danger { margin-left:0; } } @media(max-width:640px) { .ds-function-actions { grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px 8px; } .ds-action { justify-content:flex-start; font-size:12px; } .ds-action-danger { border-left:0; border-radius:8px; } } .ds-history-toggle { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:40px; padding:8px 12px; border:0; border-radius:8px; background:transparent; color:hsl(var(--primary)); font-family:inherit; font-size:13px; font-weight:550; cursor:pointer; } .ds-history-toggle svg { width:18px; height:18px; flex-shrink:0; } .ds-history-toggle:hover { background:hsl(var(--accent)); color:hsl(var(--accent-foreground)); } .ds-history-toggle:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
+    },
+    {
+      "name": "Local history item",
+      "kind": "nav",
+      "description": "Selected read-only snapshot row and separate removal action. App timestamps come from saved browser-local history; the preview has no storage callbacks.",
+      "html": "<div class=\"ds-history-item\"><button class=\"ds-history-open\" type=\"button\" aria-current=\"true\"><span>Tình yêu trong Kinh Thánh</span><time datetime=\"2026-10-20T03:00:00Z\">20/10/2026 10:00</time></button><button class=\"ds-history-remove\" type=\"button\" aria-label=\"Xóa bản lưu: Tình yêu trong Kinh Thánh\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button></div>",
+      "css": ".ds-history-item { display:flex; align-items:center; border-radius:8px; margin-bottom:4px; color:hsl(var(--foreground)); font-family:\"Segoe UI\",system-ui,sans-serif; } .ds-history-item:hover,.ds-history-item:has([aria-current=\"true\"]) { background:hsl(var(--sidebar-accent)); } .ds-history-open { flex:1; min-width:0; text-align:left; padding:12px 8px; border:0; background:transparent; color:inherit; font-family:inherit; cursor:pointer; } .ds-history-open > span { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:550; } .ds-history-open time { display:block; margin-top:4px; font-size:11px; color:hsl(var(--muted-foreground)); font-variant-numeric:tabular-nums; } .ds-history-remove { display:grid; place-items:center; flex-shrink:0; width:36px; height:40px; border:0; background:transparent; border-radius:6px; color:hsl(var(--muted-foreground)); cursor:pointer; } .ds-history-remove svg { width:18px; height:18px; } .ds-history-remove:hover { color:hsl(var(--foreground)); background:hsl(var(--muted)); } .ds-history-open:focus-visible,.ds-history-remove:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; }"
+    },
+    {
+      "name": "Read-only transcript",
+      "kind": "custom",
+      "description": "Saved plain-text reading surface. App reader overlays grid row 3, retains the mounted live panel underneath, and restores no model context or attachments.",
+      "html": "<section class=\"ds-transcript\" aria-label=\"Nội dung cuộc trò chuyện đã lưu\"><div class=\"ds-reader-heading\"><button class=\"ds-back\" type=\"button\">Về cuộc trò chuyện hiện tại</button><h1>Tình yêu trong Kinh Thánh</h1><p>Bản lưu trên trình duyệt để xem lại. Nguồn đính kèm và ngữ cảnh cho mô hình không được khôi phục.</p></div><article class=\"ds-history-message\"><h2>Trợ lý</h2><div class=\"ds-history-text\">Nội dung văn bản đã lưu trên trình duyệt.</div></article></section>",
+      "css": ".ds-transcript { min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:28px max(24px,calc((100% - 736px)/2)); background:hsl(var(--background)); color:hsl(var(--foreground)); font-family:\"Segoe UI\",system-ui,sans-serif; } .ds-reader-heading { margin-bottom:32px; } .ds-back { display:inline-flex; align-items:center; justify-content:center; min-height:40px; margin:0 0 20px -12px; padding:8px 12px; border:0; border-radius:8px; background:transparent; color:hsl(var(--primary)); font-family:inherit; font-size:13px; font-weight:550; cursor:pointer; } .ds-back:hover { background:hsl(var(--accent)); color:hsl(var(--accent-foreground)); } .ds-back:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-reader-heading h1 { font-size:24px; line-height:1.45; font-weight:650; overflow-wrap:anywhere; } .ds-reader-heading p { margin-top:12px; font-size:13px; line-height:1.7; color:hsl(var(--muted-foreground)); } .ds-history-message { margin-bottom:28px; padding-top:20px; border-top:1px solid hsl(var(--border)); } .ds-history-message h2 { margin-bottom:8px; font-size:13px; font-weight:650; color:hsl(var(--primary)); } .ds-history-text { white-space:pre-wrap; overflow-wrap:anywhere; font-size:16px; line-height:1.8; } @media(max-width:640px) { .ds-transcript { padding:20px 16px; } .ds-reader-heading h1 { font-size:21px; } .ds-history-text { font-size:15px; } }"
+    },
+    {
+      "name": "Document-library modal",
+      "kind": "card",
+      "description": "Initial loading-state visual fragment. Actual modal copies the native catalog, forwards summary/delete only after closing, and captions any startup-derived count as Ghi nhận khi bắt đầu phiên trò chuyện. It has no live-statistics endpoint.",
+      "html": "<section class=\"ds-document-library\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"ds-document-library-title\"><header class=\"ds-document-library-header\"><h2 id=\"ds-document-library-title\">Kho tài liệu</h2><button class=\"ds-document-library-close\" type=\"button\" aria-label=\"Đóng kho tài liệu\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button></header><div class=\"ds-document-library-body\"><div class=\"ds-document-library-statistics\"><p>Chưa có thống kê vector trong phiên này.</p></div><p class=\"ds-document-library-status\" role=\"status\">Đang tải danh sách tài liệu…</p></div></section>",
+      "css": ".ds-document-library { display:flex; flex-direction:column; width:min(680px,100%); max-height:calc(100dvh - 48px); border-radius:16px; background:hsl(var(--card)); color:hsl(var(--foreground)); box-shadow:0 20px 70px rgb(0 0 0 / 22%); font-family:\"Segoe UI\",system-ui,sans-serif; } .ds-document-library-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; border-bottom:1px solid hsl(var(--border)); } .ds-document-library-header h2 { margin:0; font-size:20px; line-height:1.4; font-weight:650; } .ds-document-library-close { display:grid; place-items:center; flex-shrink:0; width:40px; height:40px; border:0; background:transparent; color:inherit; border-radius:8px; cursor:pointer; } .ds-document-library-close:hover { background:hsl(var(--accent)); } .ds-document-library-close:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } .ds-document-library-body { min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:20px 24px 24px; } .ds-document-library-statistics { margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid hsl(var(--border)); } .ds-document-library-statistics p { font-size:15px; font-weight:650; font-variant-numeric:tabular-nums; } .ds-document-library-status { padding-block:8px; font-size:14px; line-height:1.8; color:hsl(var(--muted-foreground)); } @media(max-width:640px) { .ds-document-library { max-height:calc(100dvh - 24px); } .ds-document-library-header { padding:12px 16px; } .ds-document-library-body { padding:16px; } }"
+    },
+    {
+      "name": "Upload preparation window",
+      "kind": "card",
+      "description": "Preparation-state visual fragment. Actual picker/drop, limits and validation remain native; progress/results appear in this window. Active cancellation waits for native acknowledgement; processing protects dismissal. Preview controls have no callbacks.",
+      "html": "<section class=\"ds-upload\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"ds-upload-title\"><header class=\"ds-upload-header\"><h2 id=\"ds-upload-title\">Thêm tài liệu</h2><button class=\"ds-upload-close\" type=\"button\" aria-label=\"Hủy thêm tài liệu\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button></header><div class=\"ds-upload-body\"><p class=\"ds-upload-note\">Lưu ý: trước khi tải lên, hãy kiểm tra font chữ và dấu tiếng Việt. Thử sao chép một đoạn sang trình soạn thảo để xem chữ có bị lỗi không. Với TXT, dùng Unicode UTF-8 hoặc UTF-16 có BOM.</p><button class=\"ds-upload-action ds-upload-settings\" type=\"button\">Cài đặt loại tài liệu và bản dịch</button><div class=\"ds-upload-content\" role=\"status\" aria-live=\"polite\"><div class=\"ds-upload-dropzone\"><p>Kéo và thả PDF, Word (.docx/.doc) hoặc TXT Unicode vào đây.</p><button class=\"ds-upload-browse\" type=\"button\">Chọn tài liệu</button></div></div></div><footer class=\"ds-upload-footer\"><button class=\"ds-upload-action\" type=\"button\">Hủy</button></footer></section>",
+      "css": ".ds-upload { display:flex; flex-direction:column; width:min(640px,100%); max-height:calc(100dvh - 48px); border-radius:16px; background:hsl(var(--card)); color:hsl(var(--foreground)); box-shadow:0 20px 70px rgb(0 0 0 / 22%); font-family:\"Segoe UI\",system-ui,sans-serif; } .ds-upload-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; border-bottom:1px solid hsl(var(--border)); } .ds-upload-header h2 { margin:0; font-size:20px; line-height:1.4; font-weight:650; } .ds-upload-close { display:grid; place-items:center; flex-shrink:0; width:40px; height:40px; border:0; border-radius:8px; background:transparent; color:inherit; cursor:pointer; } .ds-upload-close:hover { background:hsl(var(--accent)); } .ds-upload-body { min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:20px 24px 24px; } .ds-upload-note { font-size:14px; line-height:1.8; color:hsl(var(--muted-foreground)); } .ds-upload-action { min-height:40px; padding:8px 12px; border:0; border-radius:8px; background:transparent; color:hsl(var(--primary)); text-align:left; font-family:inherit; font-size:13px; line-height:1.7; overflow-wrap:anywhere; cursor:pointer; } .ds-upload-action:hover:not(:disabled) { background:hsl(var(--accent)); } .ds-upload-settings { margin:8px 0 20px -12px; } .ds-upload-dropzone { display:flex; align-items:center; gap:16px; margin-top:20px; padding:20px; border:1px dashed hsl(var(--input)); border-radius:12px; } .ds-upload-dropzone p { font-size:14px; line-height:1.7; } .ds-upload-browse { flex-shrink:0; min-height:40px; padding:8px 16px; border:0; border-radius:8px; background:hsl(var(--primary)); color:hsl(var(--primary-foreground)); font-family:inherit; font-size:14px; font-weight:550; cursor:pointer; } .ds-upload-browse:hover { filter:brightness(.93); } .ds-upload-footer { display:flex; justify-content:flex-end; padding:12px 20px; border-top:1px solid hsl(var(--border)); } .ds-upload button:disabled { opacity:.45; cursor:not-allowed; } .ds-upload button:focus-visible { outline:2px solid hsl(var(--ring)); outline-offset:3px; } @media(max-width:640px) { .ds-upload { max-height:calc(100dvh - 24px); } .ds-upload-header { padding:12px 16px; } .ds-upload-body { padding:16px; } .ds-upload-dropzone { align-items:stretch; flex-direction:column; padding:16px; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Lectionary rubrics",
+    "overview": "Restrained berry ink gives this Vietnamese Scripture workspace its identity. Pale tinted surroundings and distinct reading surfaces support long answers and source inspection. The serif welcome heading is modest; the working interface uses a sans-serif face.\n\nThis is an extracted record of the implemented frontend, not a replacement component library. public/about.css owns the visual overrides, including its final cascade; public/about.js owns the inserted identity, welcome copy and runtime information dialog, and dynamically imports public/workspace.js for the function bar and local history reader. The workspace imports public/document-library.js for the document-library modal and friendly initial chat introduction, public/document-upload.js for upload presentation, and public/source-view.js for explicit citation-open behavior. .chainlit/config.toml loads the entry files and shared transparent SVG logo, chooses Vietnamese and defaults to light mode. Chainlit continues to own the live chat panels, native action callbacks, upload picker/validation, source rendering, settings and menus. chainlit.md and .chainlit/translations/vi.json provide interface text.",
+    "keyCharacteristics": [
+      "Berry accents on a pale light shell, with a separate charcoal and rose dark theme.",
+      "Segoe UI reading and controls, with Georgia reserved for top-level reading headings.",
+      "Recognizable inline source references that open Chainlit's existing source surface on explicit activation.",
+      "Quiet borders, restrained corners and a shared modal shadow.",
+      "A separate function bar and local, read-only transcript history around the live chat.",
+      "A dedicated document-library modal that presents existing catalog content and actions.",
+      "A compact upload window that keeps file preparation, progress and results together."
+    ],
+    "rules": [
+      {
+        "name": "The Paired Theme Rule",
+        "body": "Apply each semantic interface color through the existing CSS variable so switching the root dark class changes the entire pairing together. The shared SVG logo retains its asset fills and uses image inversion in dark mode.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading Heading Rule",
+        "body": "Keep the serif treatment on the implemented welcome and message level-one headings; preserve sans-serif type for the working controls and body.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do use the paired semantic CSS variables for both themes.",
+      "Do keep source links visibly distinct and open their native panes only after explicit citation activation.",
+      "Do retain keyboard focus outlines and the mobile information action's accessible name.",
+      "Do preserve the final CSS cascade when consulting earlier declarations.",
+      "Do keep the local reader's read-only limitation visible and retain a clear return to the current conversation.",
+      "Do keep the session-start qualifier beside the document-library vector count and forward summary/delete actions through their existing native controls.",
+      "Do keep history close and reopen actions available at every width with synchronized accessible state.",
+      "Do keep upload progress and validation inside the upload window and wait for native cancellation acknowledgement before reporting completion."
+    ],
+    "donts": [
+      "Don't expand the serif heading treatment into body text or working controls.",
+      "Don't treat the light palette as the dark palette or restore the removed berry tile behind the shared transparent logo.",
+      "Don't infer new native component states, dimensions or callbacks from these custom overrides.",
+      "Don't introduce illustrations, paper textures or decorative motion into this recorded visual direction.",
+      "Don't imply that a browser snapshot restores model context, attachments or an account-synchronized conversation.",
+      "Don't present the startup vector count as live statistics or restore recognized catalog-management output to the chat transcript.",
+      "Don't infer a persisted desktop history preference or replace the native source renderer with a custom pane.",
+      "Don't bypass native upload limits or imply that closing preparation cancels an upload already being processed."
+    ]
+  }
+}

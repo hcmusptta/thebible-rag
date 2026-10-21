@@ -292,7 +292,8 @@ async def _answer(question: str, document_type: str | None = None, edition_id: s
         await response.update()
         return
 
-    history.append({"role": "assistant", "content": answer})
+    history.append({"role": "assistant", "content": answer,
+                    "person_resolution": diagnostics.get('person_resolution', {})})
     logger.info("RAG answer: route=%s validation=%s cause=%s sources=%s",
                 diagnostics.get('retrieval_route'), diagnostics.get('answer_validation'),
                 diagnostics.get('validation_reason'), len(sources))

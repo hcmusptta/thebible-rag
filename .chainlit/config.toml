@@ -95,13 +95,13 @@ reaction_on_message_received = false
 
 [UI]
 # Name of the assistant.
-name = "Assistant"
+name = "Thư viện Kinh Thánh"
 
-# default_theme = "dark"
+default_theme = "light"
 
 # Force a specific language for all users (e.g., "en-US", "he-IL", "fr-FR")
 # If not set, the browser's language will be used
-# language = "en-US"
+language = "vi"
 
 # layout = "wide"
 
@@ -117,7 +117,7 @@ name = "Assistant"
 confirm_new_chat = true
 
 # Description of the assistant. This is used for HTML tags.
-# description = ""
+description = "Tra cứu Kinh Thánh, chú giải và giáo lý trong tài liệu của bạn."
 
 # Chain of Thought (CoT) display mode. Can be "hidden", "tool_call" or "full".
 cot = "full"
@@ -153,10 +153,10 @@ alert_style = "classic"
 # custom_meta_image_url = "https://chainlit-cloud.s3.eu-west-3.amazonaws.com/logo/chainlit_banner.png"
 
 # Load assistant logo directly from URL.
-logo_file_url = ""
+logo_file_url = "/public/library-logo.svg"
 
 # Load assistant avatar image directly from URL.
-default_avatar_file_url = ""
+default_avatar_file_url = "/public/library-logo.svg"
 
 # Avatar size in pixels (default: 20).
 # avatar_size = 20

@@ -76,7 +76,7 @@ def get_public_runtime_config() -> dict[str, Any]:
             "context_mode": "source_paragraphs_and_reviewed_passages",
             "semantic_queries": "original, resolved standalone question, at most two subject-preserving probes; same source filters",
             "scripture_selection": "full matched verses selected in bounded batches; canonical headings in BM25",
-            "scripture_answer": "source quotes for explicit titles and short lists with fixed proof IDs; generated claims independently checked; one bounded repair",
+            "scripture_answer": "source quotes for short lists with fixed proof IDs; generated paragraphs checked against shared source excerpts; one bounded repair",
             "semantic_context_budget": "drop lower priority whole paragraphs or optional exact context; keep requested references intact",
             "rrf_k": os.getenv("RAG_RRF_K", "60"),
             "filter_fallback": False,

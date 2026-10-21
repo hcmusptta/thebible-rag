@@ -9,6 +9,7 @@ from pathlib import Path
 from loaddocs.scripture_data import SCRIPTURE_PROCESSING_VERSION
 from loaddocs.scripture_references import Reference
 from loaddocs.scripture_workflow import coordinate, label_bounds
+from loaddocs.bible_people import passage_person_metadata
 
 
 class ScriptureStore:
@@ -127,6 +128,7 @@ class ScriptureStore:
                     result_meta["scope_warning"] = "Chương có phát hiện bất thường về số câu trong PDF; bản văn dưới đây là các câu hiện đủ điều kiện tra cứu, cần đối chiếu nguồn trước khi coi là đầy đủ."
                 result_meta["source_relations"] = json.dumps([r for r in self.records(run, "relation") if r.get("from") in {coordinate(v) for v in verses} and r.get("origin") != "proposed"], ensure_ascii=False)
                 result_meta["annotations"] = json.dumps({coordinate(v): v.get("annotation", {}) for v in verses}, ensure_ascii=False)
+                result_meta.update(passage_person_metadata(verses))
                 results.append({"id": f"exact:{run}:{ref.display()}", "content": text, "metadata": result_meta, "rerank_score": None, "hybrid_score": 0.0})
         if unavailable:
             raise ValueError("Kho chưa đủ đoạn yêu cầu. " + "; ".join(unavailable))
@@ -175,6 +177,7 @@ class ScriptureStore:
                                    "references": json.dumps(refs), "literal_occurrences": occurrences,
                                    "page": min(v["page"] for v in verses), "page_end": max(v["page_end"] for v in verses),
                                    "corpus_complete": profile.get("complete", False)}
+                    result_meta.update(passage_person_metadata(verses))
                     results.append({"id": f"all:{run}:{refs[0]}:{refs[-1]}", "content": "\n".join(v.get("display_text", v["text"]) for v in verses),
                                     "metadata": result_meta, "rerank_score": None, "hybrid_score": 0.0})
         return results
@@ -211,4 +214,5 @@ class ScriptureStore:
                     "page": min(v["page"] for v in rows), "page_end": max(v["page_end"] for v in rows)}
         metadata["source_relations"] = json.dumps([r for r in self.records(run, "relation") if r.get("from") in refs and r.get("origin") != "proposed"], ensure_ascii=False)
         metadata["annotations"] = json.dumps({coordinate(v): v.get("annotation", {}) for v in rows}, ensure_ascii=False)
+        metadata.update(passage_person_metadata(rows))
         return {**item, "content": text, "metadata": metadata}

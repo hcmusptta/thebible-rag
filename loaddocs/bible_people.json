@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "scope": "Initial catalog of ambiguous biblical names; not a complete census. References identify people, not every occurrence of their names. Do not merge identities from spelling, testament or book alone.",
+  "groups": [
+    {
+      "name": "Giuse", "aliases": ["Giu-se", "Giuse", "Joseph"],
+      "people": [
+        {"id": "joseph_genesis", "name": "Giuse, con ông Giacóp trong sách Sáng thế", "testament": "old", "description": "Con bà Rakhen, bị các anh bán, giải mộng cho Pharaô. Cũng được nhắc lại trong Tân Ước, chẳng hạn Cv 7:9.", "references": ["GEN 30:24", "GEN 37:28", "GEN 41:15-16", "ACT 7:9", "HEB 11:22"]},
+        {"id": "joseph_mary_spouse", "name": "Giuse, chồng Đức Maria", "testament": "new", "description": "Con ông Giacóp theo Mt 1:16; đón nhận Đức Maria, chăm sóc Hài Nhi Giêsu. Tên cha Giacóp riêng lẻ chưa phân biệt được với Giuse trong Sáng thế.", "references": ["MAT 1:16", "MAT 1:20-24"]},
+        {"id": "joseph_arimathea", "name": "Giuse người Arimathê", "aliases": ["Giuse Arimathê", "Giuse Arimathia"], "testament": "new", "description": "Xin thi hài Đức Giêsu từ Philatô và an táng Người.", "references": ["MAT 27:57-60", "JHN 19:38"]},
+        {"id": "joseph_barsabbas", "name": "Giuse Barsaba, biệt danh Giúttô", "testament": "new", "description": "Ứng viên cùng với Mátthia để thay thế Giuđa.", "references": ["ACT 1:23"]},
+        {"id": "joseph_barnabas", "name": "Giuse được các Tông đồ gọi là Barnaba", "testament": "new", "description": "Người Lêvi quê tại Sýp, được gọi là Barnaba.", "references": ["ACT 4:36"]},
+        {"id": "joseph_jesus_brother", "name": "Giuse trong danh sách anh em của Đức Giêsu", "testament": "new", "description": "Được nhắc cùng Giacôbê, Simon và Giuđa trong danh sách anh em của Đức Giêsu; không suy ra thêm loại quan hệ huyết thống.", "references": ["MAT 13:55"]},
+        {"id": "joseph_son_mattathias", "name": "Giuse, con ông Mátthátgia trong gia phả Luca", "testament": "new", "description": "Tên Giuse xuất hiện ở cuối Lc 3:24, quan hệ với Mátthátgia ở Lc 3:25; khác với Giuse ở Lc 3:30.", "references": ["LUK 3:24"]},
+        {"id": "joseph_son_jonam", "name": "Giuse, con ông Giônam trong gia phả Luca", "testament": "new", "description": "Tên Giuse xuất hiện trong gia phả ở Lc 3:30, khác với Giuse ở Lc 3:24.", "references": ["LUK 3:30"]}
+      ]
+    },
+    {
+      "name": "Gioan", "aliases": ["Gio-an", "Gioan", "John"],
+      "people": [
+        {"id": "john_baptist", "name": "Gioan Tẩy Giả", "aliases": ["Gioan Tiền Hô"], "testament": "new", "description": "Con ông Dacaria và bà Êlisabét, làm phép rửa.", "references": ["LUK 1:13", "MAT 3:1"]},
+        {"id": "john_zebedee", "name": "Gioan, con ông Dêbêđê", "testament": "new", "description": "Tông đồ, anh em với Giacôbê con ông Dêbêđê; không tự đồng nhất với tác giả các sách mang tên Gioan.", "references": ["MAT 4:21", "MAT 10:2"]},
+        {"id": "john_mark", "name": "Gioan có biệt danh Máccô", "aliases": ["Gioan Máccô"], "testament": "new", "description": "Con bà Maria có nhà nơi nhiều người tụ họp cầu nguyện.", "references": ["ACT 12:12"]},
+        {"id": "john_peter_father", "name": "Gioan, cha của Simon Phêrô theo Tin Mừng Gioan", "testament": "new", "description": "Cha của Simon theo cách gọi trong Ga 1:42; không tự đổi sang gia phả khác.", "references": ["JHN 1:42"]},
+        {"id": "john_priestly_family", "name": "Gioan thuộc dòng họ thượng tế trong Công vụ 4", "testament": "new", "description": "Được kể cùng Khanan, Caipha và Alêxanđê trong cuộc xét hỏi các Tông đồ.", "references": ["ACT 4:6"]}
+      ]
+    },
+    {
+      "name": "Maria", "aliases": ["Ma-ri-a", "Maria", "Mary"],
+      "people": [
+        {"id": "mary_jesus_mother", "name": "Maria, mẹ Đức Giêsu", "aliases": ["Đức Maria", "Đức Mẹ Maria"], "testament": "new", "description": "Được sứ thần truyền tin, thân mẫu Đức Giêsu.", "references": ["LUK 1:27-31"]},
+        {"id": "mary_magdalene", "name": "Maria Mácđala", "aliases": ["Maria Mađalêna", "Maria Magdala"], "testament": "new", "description": "Theo Đức Giêsu; không tự đồng nhất với Maria Bêtania hay người phụ nữ tội lỗi không nêu tên.", "references": ["LUK 8:2", "JHN 20:1"]},
+        {"id": "mary_bethany", "name": "Maria ở Bêtania, chị em với Mátta và Ladarô", "aliases": ["Maria Bêtania"], "testament": "new", "description": "Chị em với Mátta và Ladarô, xức dầu chân Đức Giêsu.", "references": ["JHN 11:1-2", "JHN 12:3"]},
+        {"id": "mary_james_joseph_mother", "name": "Maria, mẹ ông Giacôbê và ông Giuse", "testament": "new", "description": "Được nhắc bên cạnh Maria Mácđala khi Đức Giêsu chịu đóng đinh; không tự đồng nhất với các Maria khác.", "references": ["MAT 27:56"]},
+        {"id": "mary_mark_mother", "name": "Maria, mẹ Gioan có biệt danh Máccô", "testament": "new", "description": "Có nhà nơi nhiều người tụ họp cầu nguyện, Phêrô đến sau khi ra khỏi ngục.", "references": ["ACT 12:12"]},
+        {"id": "mary_rome", "name": "Maria được Phaolô chào trong thư Rôma", "testament": "new", "description": "Được nhắc là người đã vất vả nhiều vì cộng đoàn.", "references": ["ROM 16:6"]}
+      ]
+    },
+    {
+      "name": "Giacôbê", "aliases": ["Gia-cô-bê", "Giacôbê", "James"],
+      "people": [
+        {"id": "james_zebedee", "name": "Giacôbê, con ông Dêbêđê", "testament": "new", "description": "Tông đồ, anh em với Gioan.", "references": ["MAT 4:21", "MAT 10:2"]},
+        {"id": "james_alphaeus", "name": "Giacôbê, con ông Anphê", "testament": "new", "description": "Một trong Nhóm Mười Hai; không tự đồng nhất với Giacôbê được gọi là người anh em của Chúa.", "references": ["MAT 10:3"]}
+      ]
+    },
+    {
+      "name": "Giuđa", "aliases": ["Giu-đa", "Giuđa", "Judas", "Judah"],
+      "people": [
+        {"id": "judah_jacob_son", "name": "Giuđa, con ông Giacóp và bà Lêa", "testament": "old", "description": "Anh em với Giuse trong sách Sáng thế.", "references": ["GEN 29:35", "GEN 37:26"]},
+        {"id": "judas_iscariot", "name": "Giuđa Ítcariốt", "aliases": ["Giuđa Iscariot"], "testament": "new", "description": "Kẻ nộp Đức Giêsu.", "references": ["LUK 6:16", "JHN 12:4"]},
+        {"id": "judas_james_son", "name": "Giuđa, con ông Giacôbê", "testament": "new", "description": "Tông đồ được liệt kê riêng với Giuđa Ítcariốt trong Luca; không tự đồng nhất với các Giuđa khác.", "references": ["LUK 6:16"]},
+        {"id": "judas_galilean", "name": "Giuđa người Galilê", "testament": "new", "description": "Nổi lên vào thời kiểm tra dân số.", "references": ["ACT 5:37"]},
+        {"id": "judas_damascus", "name": "Giuđa có nhà tại Đamát trên đường Thẳng", "testament": "new", "description": "Saun ở tại nhà người này khi Khanania được sai đến.", "references": ["ACT 9:11"]},
+        {"id": "judas_barsabbas", "name": "Giuđa có biệt danh Barsaba", "testament": "new", "description": "Được sai cùng Sila đến Antiôkhia.", "references": ["ACT 15:22"]}
+      ]
+    },
+    {
+      "name": "Simon", "aliases": ["Si-mon", "Simon"],
+      "people": [
+        {"id": "simon_peter", "name": "Simon Phêrô", "aliases": ["Simon Phê-rô"], "testament": "new", "description": "Anh em với Anrê, được gọi là Phêrô.", "references": ["MAT 4:18", "JHN 1:42"]},
+        {"id": "simon_zealot", "name": "Simon thuộc nhóm Nhiệt Thành", "testament": "new", "description": "Tông đồ có biệt danh Nhiệt Thành, được liệt kê riêng với Simon Phêrô.", "references": ["LUK 6:14-15"]},
+        {"id": "simon_cyrene", "name": "Simon người Kyrênê", "aliases": ["Simon Xirênê"], "testament": "new", "description": "Bị bắt vác thập giá của Đức Giêsu.", "references": ["MAT 27:32"]},
+        {"id": "simon_leper", "name": "Simon người phong hủi ở Bêtania", "testament": "new", "description": "Đức Giêsu ở nhà ông tại Bêtania.", "references": ["MAT 26:6"]},
+        {"id": "simon_pharisee", "name": "Simon người Pharisêu trong Luca 7", "testament": "new", "description": "Mời Đức Giêsu dùng bữa, có người phụ nữ đến xức dầu chân Người.", "references": ["LUK 7:36-40"]},
+        {"id": "simon_magician", "name": "Simon làm nghề phù phép ở Samari", "testament": "new", "description": "Muốn dùng tiền để có quyền ban Thánh Thần.", "references": ["ACT 8:9", "ACT 8:18-19"]},
+        {"id": "simon_tanner", "name": "Simon thợ thuộc da ở Giaphô", "testament": "new", "description": "Phêrô trọ tại nhà ông.", "references": ["ACT 9:43"]}
+      ]
+    },
+    {
+      "name": "Dacaria", "aliases": ["Da-ca-ri-a", "Dacaria", "Dacarya", "Zachariah", "Zechariah"],
+      "people": [
+        {"id": "zechariah_prophet", "name": "Dacaria, ngôn sứ con ông Berekia, cháu ông Iđô", "testament": "old", "description": "Ngôn sứ thời vua Đariô; khác với người con của tư tế Giơhôgiađa.", "references": ["ZEC 1:1"]},
+        {"id": "zechariah_jehoiada_son", "name": "Dacaria, con tư tế Giơhôgiađa", "testament": "old", "description": "Bị ném đá trong sân Đền Thờ thời vua Giôát; không tự đồng nhất với Dacaria ở Mt 23:35.", "references": ["2CH 24:20-22"]},
+        {"id": "zechariah_john_father", "name": "Dacaria, cha của Gioan Tẩy Giả", "testament": "new", "description": "Tư tế thuộc nhóm Avigia, chồng bà Êlisabét.", "references": ["LUK 1:5", "LUK 1:13"]}
+      ]
+    },
+    {
+      "name": "Saun", "aliases": ["Sa-un", "Saun", "Saul"],
+      "people": [
+        {"id": "saul_israel_king", "name": "Saun, vua Israel, con ông Kít", "testament": "old", "description": "Vua Israel, liên quan đến Samuen và Đavít; cũng được nhắc lại trong Cv 13:21.", "references": ["1SA 9:1-2", "ACT 13:21"]},
+        {"id": "saul_edom_king", "name": "Saun, vua Êđôm quê ở Rơkhôvốt bên sông", "testament": "old", "description": "Kế vị vua Samla trong danh sách các vua Êđôm.", "references": ["GEN 36:37-38"]},
+        {"id": "saul_paul", "name": "Saun cũng được gọi là Phaolô", "testament": "new", "description": "Saun và Phaolô là hai tên của cùng người được nhắc trong Công vụ 13:9.", "references": ["ACT 13:9"]}
+      ]
+    }
+  ]
+}

@@ -71,7 +71,7 @@ class SemanticRagTests(unittest.TestCase):
             '{"supported":[1],"sufficient":true,"unsupported_details":[]}'])
         result = llm.generate_scripture_response('Ai thực hiện việc ấy?', rows)
         self.assertIn('là X', result['answer'])
-        self.assertEqual(1, llm._generate_with_fallback.call_args_list[0].kwargs['response_schema']['properties']['claims']['maxItems'])
+        self.assertEqual(3, llm._generate_with_fallback.call_args_list[0].kwargs['response_schema']['properties']['claims']['maxItems'])
 
     def test_mixed_retrieval_selects_evidence_beyond_highest_keyword_score(self):
         wrong = {'id':'wrong', 'content':'Một hành động khác.', 'metadata':{'document_type':'catechism'}}
@@ -340,8 +340,10 @@ class SemanticRagTests(unittest.TestCase):
         self.assertEqual('X là mẹ của Y. [Nguồn 1]',result['answer'])
         self.assertEqual(sources[0]['content'],result['claims'][0]['quotes'][0])
         review_payload=json.loads(llm._generate_with_fallback.call_args.args[0])
-        self.assertNotIn('sources',review_payload)
-        self.assertEqual([{'source':1,'details':['Loại: Tài liệu khác'],'content':sources[0]['content']}],review_payload['claims'][0]['paragraphs'])
+        self.assertEqual([{'id':1,'text':'X là mẹ của Y.','evidence':['S1E1']}],review_payload['claims'])
+        self.assertEqual([{'source':1,'details':['Loại: Tài liệu khác'],
+                           'excerpts':[{'id':'S1E1','text':sources[0]['content']}],
+                           'reviewed_annotations':{}}],review_payload['sources'])
         self.assertEqual([{'source':2,'content':sources[1]['content']}],review_payload['available_context'])
         self.assertNotIn('Y được trao nhiệm vụ.',json.dumps(review_payload['claims'],ensure_ascii=False))
         for invalid in (
@@ -416,13 +418,17 @@ class SemanticRagTests(unittest.TestCase):
 
     def test_identity_titles_are_bound_to_the_asked_name_and_source(self):
         llm=object.__new__(LLMService)
-        sources=[{'content':'1 Vua X-a sai người đi.'},{'content':'1 Vua Y-b ở nơi khác.'}]
+        sources=[{'content':'1 Vua X-a sai người đi. Ông trao nhiệm vụ cho họ.'},{'content':'1 Vua Y-b ở nơi khác.'}]
+        facts={'clarify':False,'claims':[{'text':'X-a là vua. Ông sai người đi và trao nhiệm vụ cho họ.','evidence':['S1E1']}]}
         llm._generate_with_fallback=Mock(side_effect=[
             '{"different_people":false,"evidence":[]}',
-            '{"ids":[1]}'])
-        self.assertEqual('“Vua X-a” [Nguồn 1]',llm.generate_scripture_response('X-a là ai?',sources)['answer'])
+            json.dumps(facts), '{"supported":[1],"sufficient":true,"unsupported_details":[]}'])
+        result=llm.generate_scripture_response('X-a là ai?',sources)
+        self.assertEqual(facts['claims'][0]['text']+' [Nguồn 1]', result['answer'])
+        self.assertEqual([sources[0]['content']], result['claims'][0]['quotes'])
         payload=json.loads(llm._generate_with_fallback.call_args_list[1].args[0])
-        self.assertEqual([{'id':1,'text':'Vua X-a','evidence':['S1E1']}],payload['choices'])
+        self.assertNotIn('choices',payload)
+        self.assertEqual(3,llm._generate_with_fallback.call_count)
 
     def test_small_lists_use_original_clauses_instead_of_copying_whole_verses(self):
         llm=object.__new__(LLMService)
@@ -472,19 +478,39 @@ class SemanticRagTests(unittest.TestCase):
         self.assertFalse(request['think'])
         self.assertEqual(schema,request['format'])
 
-    def test_basic_identity_stays_brief_but_requested_explanations_can_use_more_facts(self):
+    def test_basic_and_explanatory_answers_allow_multiple_checked_facts(self):
         llm=object.__new__(LLMService)
         sources=[{'content':'X là mẹ của Y. X sống ở Z.'}]
         facts={'clarify':False,'claims':[{'text':'X là mẹ của Y.','evidence':['S1E1']},{'text':'X sống ở Z.','evidence':['S1E1']}]}
-        llm._generate_with_fallback=Mock(return_value=json.dumps(facts))
-        self.assertIsNone(llm.generate_scripture_response('X là ai?',sources))
-        llm._generate_with_fallback=Mock(return_value=json.dumps(facts))
-        self.assertIsNone(llm.generate_scripture_response('X làm việc đó như thế nào?',sources))
-        llm._generate_with_fallback=Mock(side_effect=[json.dumps(facts),'{"supported":[1,2],"sufficient":true,"unsupported_details":[],"clarify":false}'])
-        self.assertEqual(2,len(llm.generate_scripture_response('Giải thích X là ai?',sources)['claims']))
-        for question in ('Nêu hai đặc điểm của X.','Liệt kê tên trong nhóm.','X khác nhau thế nào?'):
+        for question in ('X là ai?','X làm việc đó như thế nào?','Giải thích X là ai?',
+                         'Nêu hai đặc điểm của X.','Liệt kê tên trong nhóm.','X khác nhau thế nào?'):
             llm._generate_with_fallback=Mock(side_effect=[json.dumps(facts),'{"supported":[1,2],"sufficient":true,"unsupported_details":[]}'])
             self.assertEqual(2,len(llm.generate_scripture_response(question,sources)['claims']))
+
+    def test_explanation_paragraphs_keep_their_own_verified_citations(self):
+        llm=object.__new__(LLMService)
+        sources=[{'content':'X là mẹ của Y.'}, {'content':'X sống ở Z.'}, {'content':'X chăm sóc Y.'}]
+        facts={'clarify':False,'claims':[{'text':row['content'],'evidence':[f'S{index}E1']}
+                                       for index,row in enumerate(sources,1)]}
+        llm._generate_with_fallback=Mock(side_effect=[json.dumps(facts),'{"supported":[1,2,3],"sufficient":true,"unsupported_details":[]}'])
+        result=llm.generate_scripture_response('X là ai?',sources)
+        self.assertEqual([row['content']+f' [Nguồn {index}]' for index,row in enumerate(sources,1)], result['answer'].split('\n\n'))
+        self.assertEqual([[1],[2],[3]], [claim['sources'] for claim in result['claims']])
+
+    def test_detailed_answers_allow_six_checked_facts_and_reject_excess(self):
+        llm=object.__new__(LLMService)
+        sources=[{'content':'\n'.join(f'{index} X thực hiện công việc {index}.' for index in range(1,8))}]
+        facts={'clarify':False,'claims':[{'text':f'X thực hiện công việc {index}.','evidence':[f'S1E{index}']}
+                                       for index in range(1,7)]}
+        for question in ('Giải thích vai trò của X.', 'Trình bày đầy đủ về X.', 'X làm gì? Nêu chi tiết.'):
+            with self.subTest(question=question):
+                llm._generate_with_fallback=Mock(side_effect=[json.dumps(facts),'{"supported":[1,2,3,4,5,6],"sufficient":true,"unsupported_details":[]}'])
+                result=llm.generate_scripture_response(question,sources)
+                self.assertEqual(6,len(result['claims']))
+                self.assertEqual(6,len(result['answer'].split('\n\n')))
+        facts['claims'].append({'text':'X thực hiện công việc 7.','evidence':['S1E7']})
+        llm._generate_with_fallback=Mock(return_value=json.dumps(facts))
+        self.assertIsNone(llm.generate_scripture_response('Giải thích vai trò của X.',sources))
 
     def test_scripture_answer_never_falls_back_to_an_unsupported_draft(self):
         llm=Mock(); llm.generate_response.return_value='Wrong relation. [Nguồn 1]'

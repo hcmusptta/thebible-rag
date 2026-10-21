@@ -104,6 +104,46 @@ class ReleaseSafetyTests(unittest.TestCase):
         self.assertEqual(0,usage['requests'])
         provider.client.invoke.assert_not_called()
 
+    def test_context_budget_reports_the_local_bound_without_a_provider_failure_log(self):
+        provider=object.__new__(_OllamaProvider)
+        provider.num_ctx=1024; provider.max_output_tokens=256; provider.client=Mock()
+        llm=object.__new__(LLMService); llm.providers=[provider]
+        with patch('builtins.print') as console, self.assertLogs('services.model',level='DEBUG'), self.assertRaises(ContextBudgetError) as caught:
+            llm._generate_with_fallback('x'*2000,system_prompt='System')
+        console.assert_not_called()
+        provider.client.invoke.assert_not_called()
+        self.assertIn('256 byte',str(caught.exception))
+        self.assertIn('1024 token',str(caught.exception))
+
+    def test_six_claims_share_full_review_evidence_without_exceeding_context(self):
+        facts=[f'X thực hiện nhiệm vụ {index}.' for index in range(1,7)]
+        paragraph=' '.join(facts) + ' Văn mạch của nguồn được giữ đầy đủ.'*22
+        draft={'clarify':False,'insufficient_evidence':False,'claims':[
+            {'text':text,'evidence':['S1E1']} for text in facts]}
+        verdict={'unsupported_details':[],'supported':[1,2,3,4,5,6],'sufficient':True}
+        provider=object.__new__(_OllamaProvider)
+        provider.num_ctx=16384; provider.max_output_tokens=2048; provider.client=Mock()
+        provider.client.bind.return_value=provider.client
+        payloads=[]
+        def respond(messages):
+            payload=json.loads(messages[1].content)
+            payloads.append(payload)
+            return SimpleNamespace(content=json.dumps(verdict if 'claims' in payload else draft),response_metadata={})
+        provider.client.invoke.side_effect=respond
+        llm=object.__new__(LLMService); llm.providers=[provider]
+        result=llm.generate_scripture_response('Giải thích vai trò của X.',[
+            {'content':paragraph,'metadata':{'document_type':'commentary'}}])
+        self.assertEqual(6,len(result['claims']))
+        self.assertEqual(2,len(payloads))
+        review=payloads[1]
+        self.assertEqual(1,len(review['sources']))
+        self.assertEqual(paragraph,review['sources'][0]['excerpts'][0]['text'])
+        self.assertTrue(all(claim['evidence']==['S1E1'] for claim in review['claims']))
+        self.assertEqual(1,json.dumps(review,ensure_ascii=False).count(paragraph))
+        old_copies=[{'quotes':[paragraph],'paragraphs':[{'content':paragraph}]} for _ in facts]
+        self.assertGreater(len(json.dumps(old_copies,ensure_ascii=False).encode('utf-8')),
+                           provider.num_ctx-provider.max_output_tokens-512)
+
     def test_malformed_json_is_not_accepted_from_a_provider(self):
         llm=object.__new__(LLMService)
         llm.providers=[SimpleNamespace(name='hf',generate=Mock(return_value='{"value":"wrong"}'))]

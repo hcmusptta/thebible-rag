@@ -37,7 +37,7 @@ def run_manifest(testset_path, database):
         for path in sorted((root/folder).glob('*.py')):
             code.update(path.relative_to(root).as_posix().encode())
             code.update(path.read_bytes())
-    for name in ('main.py', 'evaluate_bible_answers.py', 'requirements.txt'):
+    for name in ('main.py', 'evaluate_bible_answers.py', 'requirements.txt', 'loaddocs/bible_people.json'):
         code.update((root/name).read_bytes())
     metadata = getattr(getattr(database, 'collection', None), 'metadata', None)
     metadata = metadata if isinstance(metadata, dict) else {}

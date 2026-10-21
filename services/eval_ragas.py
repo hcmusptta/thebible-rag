@@ -23,6 +23,7 @@ from ragas.metrics._answer_relevance import ResponseRelevancePrompt
 from ragas.run_config import RunConfig
 
 from services.ans import answer_question, retrieve_ranked_contexts
+from services.person_resolution import AmbiguousPersonError
 from services.ragas_llm import SchemaConstrainedOllamaLLMWrapper
 from vectordb.vector_store import default_db
 from services.benchmark_manifest import run_manifest, validate_testset_sources
@@ -138,15 +139,18 @@ def _retrieve_contexts_for_benchmark(
     diagnostics: Optional[Dict[str, object]] = None,
     chat_history=None, document_type=None, edition_id=None, translation=None,
 ) -> List[str]:
-    ranked_results = retrieve_ranked_contexts(
-        question=question,
-        chat_history=chat_history,
-        top_k=top_k, 
-        candidate_limit=DEFAULT_CANDIDATE_LIMIT,
-        is_benchmark=True,
-        diagnostics=diagnostics,
-        document_type=document_type, edition_id=edition_id, translation=translation,
-    )
+    try:
+        ranked_results = retrieve_ranked_contexts(
+            question=question,
+            chat_history=chat_history,
+            top_k=top_k,
+            candidate_limit=DEFAULT_CANDIDATE_LIMIT,
+            is_benchmark=True,
+            diagnostics=diagnostics,
+            document_type=document_type, edition_id=edition_id, translation=translation,
+        )
+    except AmbiguousPersonError:
+        return []
     return [item["content"] for item in ranked_results]
 
 

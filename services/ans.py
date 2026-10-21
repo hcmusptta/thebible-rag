@@ -17,6 +17,8 @@ from loaddocs.scripture_references import parse_references, Reference
 from loaddocs.scripture_store import ScriptureStore
 from loaddocs.scripture_data import SCRIPTURE_PROCESSING_VERSION
 from services.model import LLMService, ContextBudgetError, LLMOutputError, LLMRequestError
+from services.person_resolution import AmbiguousPersonError, resolve_people
+from loaddocs.bible_people import person_metadata
 from vectordb.vector_store import default_db
 
 
@@ -147,12 +149,14 @@ def _collect_hybrid_candidates(
     if (
         history
         and history[-1].get("role") == "user"
-        and _clean_query_variant(history[-1].get("content", "")) == question
+        and _clean_query_variant(history[-1].get("content", "")) in {
+            question, _clean_query_variant((diagnostics or {}).get('person_resolution', {}).get('input_question', question))}
     ):
         history = history[:-1]
     canonical_question = default_db.normalize_query_names(question)
     planning_history = [
-        {**message, 'content': default_db.normalize_query_names(message['content'])}
+        {**{key: value for key, value in message.items() if key != 'person_resolution'},
+         'content': default_db.normalize_query_names(message['content'])}
         if isinstance(message.get('content'), str) else message
         for message in history[-6:]
     ]
@@ -167,6 +171,9 @@ def _collect_hybrid_candidates(
         plan = {"question": question, "queries": []}
     unnormalized_query = _clean_query_variant(plan.get("question", question)) or question
     query = default_db.normalize_query_names(unnormalized_query)
+    identity_hint = (diagnostics or {}).get('person_resolution', {}).get('identity_hint', '')
+    if identity_hint and identity_hint not in query:
+        query += f' ({identity_hint})'
     predicate_probe = ''
     if retrieval_profile == 'full' and re.match(r'^ai\b', canonical_question, re.I):
         # The named object can be in a neighbouring verse, while the action identifies the answer.
@@ -179,6 +186,8 @@ def _collect_hybrid_candidates(
         if not isinstance(value, str) or not value.strip():
             continue
         variant = default_db.normalize_query_names(_clean_query_variant(value))
+        if identity_hint and identity_hint not in variant:
+            variant += f' ({identity_hint})'
         key = " ".join(re.sub(r"[^\w\s-]", "", variant.casefold()).split())
         if key not in seen:
             seen.add(key)
@@ -205,6 +214,19 @@ def _collect_hybrid_candidates(
     # Preserve the best hits of each probe; overlap must not crowd out a useful supplementary query.
     ordered = protected + [item['id'] for item in sorted(merged.values(),key=lambda item:item['query_fusion_score'],reverse=True) if item['id'] not in protected]
     candidates = [merged[key] for key in ordered[:candidate_limit]]
+    resolution = (diagnostics or {}).get('person_resolution', {})
+    if resolution.get('status') == 'resolved':
+        selected_groups = resolution['groups']
+        safe_candidates = []
+        for item in candidates:
+            metadata = dict(item.get('metadata') or {})
+            metadata.update(person_metadata(item.get('content', ''), metadata))
+            identified = set(json.loads(metadata.get('person_ids', '[]')))
+            conflict = any(identified.intersection(group.get('all_ids', group['candidate_ids'])) and
+                           not identified.intersection(group['selected_ids']) for group in selected_groups)
+            if not conflict:
+                safe_candidates.append({**item, 'metadata': metadata})
+        candidates = safe_candidates
     if diagnostics is not None:
         diagnostics["retrieval_query"] = query
         diagnostics["query_normalized"] = canonical_question != question or query != unnormalized_query
@@ -313,6 +335,7 @@ def retrieve_ranked_contexts(
     translation: str | None = None,
     retrieval_profile: str = 'full',
 ) -> List[Dict[str, Any]]:
+    diagnostics = diagnostics if diagnostics is not None else {}
     if retrieval_profile not in {'bm25','vector','hybrid','hybrid_rerank','full'}:
         raise ValueError('Unknown retrieval profile.')
     if diagnostics is not None:
@@ -324,12 +347,22 @@ def retrieve_ranked_contexts(
         document_type in {None, "all", "auto"} and prose_question
     )
     try:
+        if is_scripture and parse_references(question):
+            resolution = resolve_people(question, chat_history)
+            if resolution.get('reference_question'):
+                diagnostics['person_resolution'] = resolution
+                if resolution['status'] == 'clarify':
+                    diagnostics.update(answer_validation='clarification', retrieval_route='person_clarification')
+                    raise AmbiguousPersonError(resolution['message'])
+                question = resolution['question']
+                diagnostics['resolved_question'] = question
         if is_scripture:
             resolved = _resolve_scripture_followup(question,chat_history)
             if diagnostics is not None and resolved != question:
                 diagnostics['resolved_question'] = resolved
             question = resolved
-        references = parse_references(question) if is_scripture else []
+        reference_question = diagnostics.get('person_resolution', {}).get('reference_question', question)
+        references = parse_references(reference_question) if is_scripture else []
         normalized = normalize_scripture_text(question)
         term = re.search(r'["“]([^"”]+)["”]', question)
         count_intent = bool(re.search(r"\b(?:đếm|bao nhiêu)\b", question.casefold()) or re.search(r"\b(?:dem|bao nhieu)\b", question.casefold()))
@@ -344,6 +377,8 @@ def retrieve_ranked_contexts(
             results = ScriptureStore(default_db).lookup(references, edition_id, translation)
         else:
             results = None
+    except AmbiguousPersonError:
+        raise
     except ValueError as error:
         raise IncompleteScriptureReference(str(error)) from error
     if results is not None:
@@ -352,7 +387,21 @@ def retrieve_ranked_contexts(
                                references=[r.display() for r in references], returned_context_count=len(results),
                                final_contexts=[r["content"] for r in results])
         return results
-    scripture_filters = (extract_scripture_query_filters(question) or type_filters) if is_scripture else type_filters
+    scope_question = question
+    if document_type != 'generic':
+        def select_people(text, groups):
+            llm = get_benchmark_llm_service() if is_benchmark else get_llm_service()
+            return llm.select_biblical_people(text, groups)
+        resolution = resolve_people(question, chat_history, select=select_people)
+        diagnostics['person_resolution'] = resolution
+        if resolution['status'] == 'clarify':
+            diagnostics.update(answer_validation='clarification', retrieval_route='person_clarification')
+            raise AmbiguousPersonError(resolution['message'])
+        if resolution['status'] == 'resolved':
+            question = resolution['question']
+            scope_question = resolution['original_question']
+            diagnostics['resolved_question'] = question
+    scripture_filters = (extract_scripture_query_filters(scope_question) or type_filters) if is_scripture else type_filters
     clauses = []
     if scripture_filters:
         clauses.extend(scripture_filters.get("$and", [{k: v} for k, v in scripture_filters.items()]))
@@ -523,7 +572,7 @@ def answer_question(
             document_type=document_type,
             edition_id=edition_id, translation=translation,
         )
-    except IncompleteScriptureReference as error:
+    except (IncompleteScriptureReference, AmbiguousPersonError) as error:
         return str(error), []
     except (LLMOutputError, LLMRequestError) as error:
         diagnostics.update(answer_validation='provider_error', validation_reason=type(error).__name__)
@@ -624,6 +673,7 @@ def answer_question(
                 diagnostics['returned_context_count'] = len(top_results)
                 diagnostics['final_contexts'] = [row['content'] for row in top_results]
                 continue
+            diagnostics.update(answer_validation='context_budget_exceeded', validation_reason='ContextBudgetError')
             return (quoted + "\n\n" if quoted else "") + str(error), top_results
     if answer.strip() == "KHONG_DU_NGUON":
         diagnostics["answer_validation"] = "insufficient_evidence"

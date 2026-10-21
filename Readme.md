@@ -126,6 +126,18 @@ Mở `http://localhost:8000`. Thêm `-w` để tự tải lại khi phát triể
 3. Kiểm tra thông báo nạp, cảnh báo và nguồn đính kèm khi hỏi đáp. Chọn đúng loại nếu nhận diện tự động không phù hợp.
 4. **Kho tài liệu** cho phép xem, tóm tắt và xóa tài liệu. **Xóa toàn bộ** reset collection vector sau xác nhận; bản gốc, export và snapshot audit trên đĩa không tự bị xóa.
 
+Đáp án nêu ý chính trước, sau đó giải thích và bổ sung bối cảnh liên quan có trong nguồn.
+Câu hỏi thông thường có thể dùng tối đa 3 đoạn ý; câu giải thích, so sánh hoặc yêu cầu chi tiết
+có thể dùng tối đa 6. Mỗi đoạn có trích dẫn và được kiểm chứng riêng; không bắt buộc viết đủ
+số đoạn khi nguồn ít thông tin. Yêu cầu danh sách có số mục cụ thể vẫn giữ đúng số mục.
+
+Bước kiểm chứng dùng chung một bảng excerpt nguồn cho mọi ý, giữ nguyên nội dung và mã
+bằng chứng của từng ý, tránh lặp toàn bộ đoạn nguồn trong mỗi claim. `ContextBudgetError`
+là bộ chặn dung lượng ở ứng dụng: phép kiểm tra hiện lấy byte UTF-8 làm cận trên bảo thủ,
+không phải số token thực tế. Hệ thống có thể bỏ đoạn ngữ cảnh phụ ít ưu tiên rồi thử lại;
+các câu được yêu cầu theo tham chiếu cụ thể được giữ nguyên. Khi không thể thu gọn nữa,
+thông báo nêu dung lượng và ngưỡng tương ứng; lần tự điều chỉnh được ghi ở mức debug.
+
 PDF mặc định tối đa 100 MB và 3.500 trang, theo `.env`. DOCX/TXT dùng vị trí đoạn/dòng thay cho số trang PDF. TXT cần Unicode UTF-8 hoặc UTF-16 có BOM. DOC phụ thuộc bộ đọc Node.js ở bước 1.
 
 Bộ đọc PDF Kinh Thánh dựa vào bookmark/bố cục và nhãn chương–câu; Word/TXT cần tên sách, chương và nhãn câu đủ rõ. Đọc được text không đồng nghĩa nhận diện được cấu trúc Kinh Thánh. Nội dung OCR hoặc cấu trúc chưa tin cậy có thể bị cách ly và không được dùng trả lời.
@@ -181,6 +193,48 @@ python -X utf8 evaluate_bible_answers.py --answers --output bible_workflow_data/
 ```
 
 So khớp tham chiếu/từ khóa chỉ hỗ trợ kiểm tra hồi quy. Cần đọc lại đáp án và bằng chứng; điểm RAGAS hay trạng thái có dẫn nguồn không chứng minh mọi diễn giải đều đúng.
+
+## Nhân vật trùng tên
+
+`loaddocs/bible_people.json` lưu mã riêng cho từng cá thể, tên/biến thể, Cựu hoặc Tân Ước,
+đặc điểm phân biệt và các tham chiếu nhận diện. Danh mục ban đầu có 40 hồ sơ trong 8 nhóm:
+Giuse, Gioan, Maria, Giacôbê, Giuđa, Simon, Dacaria và Saun. Đây chưa phải danh sách đầy đủ
+mọi nhân vật Kinh Thánh. Không gộp cá thể vì trùng tên, cùng Ước hay cùng sách; không tự
+đồng nhất các nhân vật mà nguồn còn có cách hiểu khác nhau.
+
+Trước tìm kiếm ngữ nghĩa, hệ thống tìm ứng viên theo tên rồi xét tên đầy đủ, quan hệ hoặc
+sự kiện. Cựu/Tân Ước giúp thu hẹp ứng viên nhưng không tự chứng minh danh tính. Câu thiếu
+ngữ cảnh như “Giuse trong Tân Ước là ai?” được hỏi lại trước khi tìm nguồn. Người dùng có
+thể chọn số, tên đầy đủ hoặc mô tả; hệ thống tiếp tục câu hỏi ban đầu và lưu lựa chọn trong
+phiên chat. Lượt hỏi có đại từ được gắn với lựa chọn vừa xác định; chuyển chủ đề bỏ ngữ cảnh đó.
+Câu yêu cầu liệt kê nhiều người cùng tên vẫn giữ ý định liệt kê.
+
+Phân biệt Ước của đoạn nguồn với bối cảnh chính của nhân vật: Giuse trong Sáng thế vẫn
+được nhắc ở Cv 7:9 và Hr 11:22. Bản văn Tân Ước không biến người đó thành Giuse, chồng
+Đức Maria. Danh sách ứng viên trong metadata giữ các khả năng này; khi người dùng nêu
+phạm vi một Ước, các tham chiếu nhận diện đã biết cũng được xét cùng bối cảnh nhân vật.
+
+Với mô tả sự kiện, model chỉ được chọn mã thuộc danh sách và phải nêu chi tiết nguyên văn
+từ câu hỏi; đầu ra sai mã, thiếu chi tiết phân biệt hoặc lỗi model dẫn đến hỏi lại. Tên đã
+xác định được giữ trong các truy vấn kể cả khi bước lập kế hoạch bỏ sót tên. Danh mục chỉ
+định hướng tìm kiếm; mọi ý trả lời vẫn phải được kiểm chứng bằng đoạn tài liệu đã nạp.
+
+Metadata `person_candidates` chứa các khả năng, còn `person_ids` chỉ chứa định danh có
+tham chiếu nhận diện khớp vị trí nguồn. Một đoạn có thể có nhiều mã. Không gán chắc chắn
+chỉ từ tên hay Ước. Các đoạn xác nhận người cùng tên khác được loại khỏi ứng viên của
+người đã chọn; đoạn chưa có nhãn vẫn được giữ để tránh mất nguồn đúng. Bản văn mở rộng
+được tổng hợp lại mã từ từng câu, không kế thừa mã của riêng câu đầu tiên.
+
+Dữ liệu mới được bổ sung metadata khi nạp; dữ liệu cũ được đối chiếu khi truy xuất/đọc
+bản văn gốc, không yêu cầu xóa kho hay tạo lại embedding. Đọc tham chiếu cụ thể và đếm
+cụm từ nguyên văn tiếp tục dùng tuyến tra cứu bản văn, không bị chặn bởi tên trùng.
+
+Khi bổ sung hồ sơ, dùng mã mới ổn định, kiểm tra quan hệ và tham chiếu theo bản dịch đang
+dùng, rồi khởi động lại ứng dụng để tải lại danh mục. Tham chiếu là điểm nhận diện, không
+phải danh sách tất cả các lần xuất hiện của nhân vật. Đối chiếu tham khảo: [bản Kinh Thánh
+NABRE của USCCB](https://bible.usccb.org/bible), chẳng hạn [Mt 27](https://bible.usccb.org/bible/matthew/27),
+[Lc 3](https://bible.usccb.org/bible/luke/3), [2 Sb 24](https://bible.usccb.org/bible/2chronicles/24).
+Không tự quy đổi số câu của bản dịch khác. Bộ kiểm thử hồi quy nằm ở `tests/test_person_resolution.py`.
 
 ## Phục hồi và lỗi thường gặp
 

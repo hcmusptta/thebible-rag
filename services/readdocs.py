@@ -20,6 +20,7 @@ from loaddocs.scripture_workflow import load_profile, prepare_scripture, coordin
 from loaddocs.scripture_store import ScriptureStore
 from loaddocs.source_documents import SUPPORTED_EXTENSIONS, open_source
 from loaddocs.scripture_text import parse_scripture_text
+from loaddocs.bible_people import person_metadata
 from vectordb.vector_store import INGEST_SCHEMA_VERSION, VectorDatabase, default_db
 
 
@@ -347,10 +348,12 @@ def _process_uploaded_document(
         )
 
     total_chunks = len(all_chunks)
-    for metadata in all_metadatas:
+    for text, metadata in zip(all_chunks, all_metadatas):
         for key, value in common.items():
             metadata.setdefault(key, value)
         metadata["document_chunk_total"] = total_chunks
+        if metadata.get('document_type') in {'scripture', 'bible', 'catechism', 'commentary'}:
+            metadata.update(person_metadata(text, metadata))
     ids = [
         (
             f"{document_id}:schema:{INGEST_SCHEMA_VERSION}:"
