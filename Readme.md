@@ -1,4 +1,10 @@
 # RAG Chatbot
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Chainlit](https://img.shields.io/badge/Chainlit-FF4B4B?style=for-the-badge)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FFDE59?style=for-the-badge&logoColor=black)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)
+![BM25](https://img.shields.io/badge/BM25-005571?style=for-the-badge)
+![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 Ứng dụng Chainlit để hỏi đáp PDF, Word (`.docx`, `.doc`) và TXT tiếng Việt, tập trung vào bản văn Kinh Thánh, giáo lý và chú giải. Hệ thống kết hợp ChromaDB, tìm kiếm từ khóa BM25, embedding và chọn nguồn trước khi tạo câu trả lời.
 
